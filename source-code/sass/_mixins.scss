@@ -1,0 +1,39 @@
+@import 'sprite';
+
+$ieSprite: '.lt-ie9' !default;
+$mq-base-font-size: 16px !default;
+//$sprite: map-get($icons, sprite) !default; //for creating svg sprite uncoomment
+
+@import 'bourbon';
+@import 'css3-mixins';
+@import 'sassMQ';
+//@import 'svg_sprite_mixins'; //for creating svg sprite uncoomment
+
+$uni-font-sz: calc(1em + 1vw);
+
+@mixin social($spr, $spr_hover){
+    @include sprite($spr);
+    &:hover {
+        @include sprite($spr_hover);
+    }
+}
+@mixin font-family($name, $size: $mq-base-font-size){
+    font-family : $name, Arial, Helvetica, sans-serif;
+    font-size : mq-px2em($size);
+}
+
+// Import all the tools needed to customize the theme and extract parts of it
+@import '../node_modules/@angular/material/core/theming/all-theme.scss';
+
+// Define a mixin that accepts a theme and outputs the color styles for the component.
+@mixin candy-carousel-theme($theme) {
+    // Extract whichever individual palettes you need from the theme.
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+
+    // Use md-color to extract individual colors from a palette as necessary.
+    .candy-carousel {
+        background-color: md-color($primary);
+        border-color: md-color($accent, A400);
+    }
+}
