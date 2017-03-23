@@ -12,7 +12,6 @@ import { Observable } from "rxjs/Observable";
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/let';
-import { MdDialogRef } from "@angular/material";
 import { D3Service } from "../../services/d3.service";
 import { ComputationService } from "../../services/computation.service";
 import { ErrorHandlerService } from "../../services/error.handler.service";
@@ -35,7 +34,8 @@ var ModelingComponent = (function () {
         this.store = store;
         this.routeAnimationRight = true;
         this.position = 'absolute';
-        this.store.select(rootReducer.MODELINGINIT)
+        // Can be used combineLatest()
+        this.store.select(rootReducer.MODELING_INIT)
             .subscribe(function (v) {
             _this.SVGCOMPS = v[0], _this.SVGATTRS = v[1], _this.MWTITLE = v[2], _this.TOOLTIPPOS = v[3], _this.TOOLTIPD = v[4], _this.spTgl = v[5], _this.spStVal = v[6], _this.inputs = v[7];
         }, function (e) { _this.ES.handleError(e); });
@@ -114,7 +114,7 @@ __decorate([
 ModelingComponent = __decorate([
     Component({
         moduleId: module.id,
-        template: "<section class=\"wrapper wrapper__modeling\">\n        <h2>Visualization</h2>\n        <form>\n            <app-input *ngFor=\"let input of inputs;\" \n                [app-input-data]=\"input\" \n                class=\"modeling__inputs\">\n            </app-input>\n            <button md-raised-button class=\"modeling__btn\" #launch>Launch</button>\n            <progress-spinner-i [spinner-start-val]=\"spStVal\"\n                                [@openHide]=\"spTgl\">   \n            </progress-spinner-i>       \n        </form>\n        <div id=\"graphView\" #graphView></div>\n    </section>",
+        template: "<section class=\"wrapper wrapper__modeling\">\n        <h2>Visualization</h2>\n        <form>\n            <app-input *ngFor=\"let input of inputs;\" \n                [app-input-data]=\"input\"\n                [mdTooltip]=\"input.toolTip\"\n                [mdTooltipPosition]=\"TOOLTIPPOS\"\n                [mdTooltipShowDelay]=\"TOOLTIPD\"\n                class=\"modeling__inputs\">\n            </app-input>\n            <button md-raised-button class=\"modeling__btn\" #launch>Launch</button>\n            <progress-spinner-i [spinner-start-val]=\"spStVal\"\n                                [@openHide]=\"spTgl\">   \n            </progress-spinner-i>       \n        </form>\n        <div id=\"graphView\" #graphView></div>\n    </section>",
         styleUrls: ['modeling.component.css'],
         animations: [
             AnimationsServices.animatonThreeStates('routeAnimationRight', { opacity: 1, transform: 'translateX(0)' }, [{ opacity: 0, transform: 'translateX(100%)' }, { opacity: 0, transform: 'translateX(100%)' }], ['0.4s ease-in', '0.4s ease-out']),
@@ -137,21 +137,6 @@ ModelingComponent = __decorate([
         Store])
 ], ModelingComponent);
 export { ModelingComponent };
-var ModalWindowComponent = (function () {
-    function ModalWindowComponent(dialogRef) {
-        this.dialogRef = dialogRef;
-    }
-    return ModalWindowComponent;
-}());
-ModalWindowComponent = __decorate([
-    Component({
-        selector: 'modal-wndw',
-        template: "\n    <button md-button class=\"modal-wndw__btn\" \n        (click)=\"dialogRef.close()\">X</button>\n    <h2>{{ title }}</h2>\n    <stub-cmpnt [stub-cmpnt-body]=\"element\"></stub-cmpnt>",
-        styles: ["\n        h2{\n            text-align: center; \n            text-transform: uppercase;\n            margin: 0 0 0 40px;\n            padding: 0;\n        } \n        .modal-wndw__btn{\n            min-width: 40px; \n            padding: 0;\n            float: right;\n        }\n    "]
-    }),
-    __metadata("design:paramtypes", [MdDialogRef])
-], ModalWindowComponent);
-export { ModalWindowComponent };
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 
 //# sourceMappingURL=modeling.component.js.map

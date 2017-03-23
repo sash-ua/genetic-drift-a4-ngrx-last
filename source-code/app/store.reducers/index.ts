@@ -9,25 +9,25 @@ export interface State {
     modeling: fromModeling.State,
     router: fromRouter.RouterState;
 }
-const reducers = {
+const REDUCERS = {
     modeling: fromModeling.reducer,
     router: fromRouter.routerReducer,
 };
 
-const developmentReducer: ActionReducer<State> = compose(storeFreeze, combineReducers)(reducers);
+const DEV_REDUCER: ActionReducer<State> = compose(storeFreeze, combineReducers)(REDUCERS);
 
 export function reducer(state: any, action: any) {
     // if (environment.production) {
-    //     return productionReducer(state, action);
+    //     return PROD_REDUCER(state, action);
     // } else {
-    //     return developmentReducer(state, action);
+    //     return DEV_REDUCER(state, action);
     // }
-    return developmentReducer(state, action);
+    return DEV_REDUCER(state, action);
 }
 
-export const modelingState = (state: State) => state.modeling;
+export const MODELING_STATE = (state: State) => state.modeling;
 
-export const MODELINGINIT = createSelector(modelingState, fromModeling.getModelingConst);
+export const MODELING_INIT = createSelector(MODELING_STATE, fromModeling.GET_MODELING_CONST);
 
 
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.

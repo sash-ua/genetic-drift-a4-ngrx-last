@@ -5,7 +5,6 @@ import {Observable} from "rxjs/Observable";
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/let';
-import {MdDialog, MdDialogRef} from "@angular/material";
 import {D3Service} from "../../services/d3.service";
 import {ComputationService} from "../../services/computation.service";
 import {ErrorHandlerService} from "../../services/error.handler.service";
@@ -30,7 +29,10 @@ import {combineLatest} from "rxjs/observable/combineLatest";
         <h2>Visualization</h2>
         <form>
             <app-input *ngFor="let input of inputs;" 
-                [app-input-data]="input" 
+                [app-input-data]="input"
+                [mdTooltip]="input.toolTip"
+                [mdTooltipPosition]="TOOLTIPPOS"
+                [mdTooltipShowDelay]="TOOLTIPD"
                 class="modeling__inputs">
             </app-input>
             <button md-raised-button class="modeling__btn" #launch>Launch</button>
@@ -82,7 +84,8 @@ export class ModelingComponent implements AfterViewInit{
         public DOMS: DOMService,
         private store: Store<rootReducer.State>
     ){
-        this.store.select(rootReducer.MODELINGINIT)
+        // Can be used combineLatest()
+        this.store.select(rootReducer.MODELING_INIT)
             .subscribe(
                 (v: any[]) => {
                     [this.SVGCOMPS, this.SVGATTRS, this.MWTITLE, this.TOOLTIPPOS, this.TOOLTIPD, this.spTgl, this.spStVal, this.inputs] = v;
@@ -171,33 +174,6 @@ export class ModelingComponent implements AfterViewInit{
             view
         );
     }
-}
-
-@Component({
-    selector: 'modal-wndw',
-    template: `
-    <button md-button class="modal-wndw__btn" 
-        (click)="dialogRef.close()">X</button>
-    <h2>{{ title }}</h2>
-    <stub-cmpnt [stub-cmpnt-body]="element"></stub-cmpnt>`,
-    styles: [`
-        h2{
-            text-align: center; 
-            text-transform: uppercase;
-            margin: 0 0 0 40px;
-            padding: 0;
-        } 
-        .modal-wndw__btn{
-            min-width: 40px; 
-            padding: 0;
-            float: right;
-        }
-    `]
-})
-export class ModalWindowComponent{
-    title: string;
-    element: SVGAElement;
-    constructor(public dialogRef: MdDialogRef<ModalWindowComponent>) {}
 }
 
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.

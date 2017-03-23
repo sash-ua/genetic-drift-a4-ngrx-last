@@ -28,8 +28,8 @@ var INIT_STATE = __assign({ SPN_TGL: 'out', SPN_STATE_VAL: 0, INPUTS: [
     ] }, MODELING_CONSTS);
 export function reducer(state, action) {
     if (state === void 0) { state = INIT_STATE; }
-    console.log(state);
-    console.log(action);
+    // console.log(state);
+    // console.log(action);
     switch (action.type) {
         case modeling.ActionTypes.INPUTS:
             return __assign({ SPN_TGL: 'in', SPN_STATE_VAL: ComputationService.rndmGen(25, 50), INPUTS: SpecificService.applInputsData(state.INPUTS, action.payload) }, MODELING_CONSTS);
@@ -49,21 +49,19 @@ export function reducer(state, action) {
 }
 // Because the data structure is defined within the reducer it is optimal to
 // locate our selector functions at this level. If store is to be thought of
-// as a database, and reducers the tables, selectors can be considered the
+// as a database, and REDUCERS the tables, selectors can be considered the
 // queries into said database. Remember to keep your selectors small and
 // focused so they can be combined and composed to fit each particular
 // use-case.
-export var getSVGComps = function (state) { return state.SVG_COMPS; };
-export var getSVGAttrs = function (state) { return state.SVG_ATTRS; };
-export var getMWTitle = function (state) { return state.MW_TITLE; };
-export var getToolTipPos = function (state) { return state.TOOLTIP_POS; };
-export var getTooltipPd = function (state) { return state.TOOLTIP_D; };
-export var getInputs = function (state) { return state.INPUTS; };
-export var getSpnTgl = function (state) { return state.SPN_TGL; };
-export var getSpnStVal = function (state) { return state.SPN_STATE_VAL; };
-// export const modelingTooltips = createSelector(toolTipPos, tooltipPd, (...s: any[])=> {return s});
-// export const getSMSAttr = createSelector(SVGAttrs, MWTitle, SVGComps, (...s: any[])=> {return s});
-export var getModelingConst = createSelector(getSVGComps, getSVGAttrs, getMWTitle, getToolTipPos, getTooltipPd, getSpnTgl, getSpnStVal, getInputs, function () {
+export var GET_SVG_COMPS = function (state) { return state.SVG_COMPS; };
+export var GET_SVG_ATTRS = function (state) { return state.SVG_ATTRS; };
+export var GET_MW_TITLE = function (state) { return state.MW_TITLE; };
+export var GET_TOOLTIP_POS = function (state) { return state.TOOLTIP_POS; };
+export var GET_TOOLTIP_D = function (state) { return state.TOOLTIP_D; };
+export var GET_INPUTS = function (state) { return state.INPUTS; };
+export var GET_SPN_TGL = function (state) { return state.SPN_TGL; };
+export var GET_SPN_STATE_VAL = function (state) { return state.SPN_STATE_VAL; };
+export var GET_MODELING_CONST = createSelector(GET_SVG_COMPS, GET_SVG_ATTRS, GET_MW_TITLE, GET_TOOLTIP_POS, GET_TOOLTIP_D, GET_SPN_TGL, GET_SPN_STATE_VAL, GET_INPUTS, function () {
     var s = [];
     for (var _i = 0; _i < arguments.length; _i++) {
         s[_i] = arguments[_i];

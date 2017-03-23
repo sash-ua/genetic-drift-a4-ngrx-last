@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
 import { InstructionComponent } from "./inctruction.component/instruction.component";
 import { ModelingComponent } from "./modeling.component/modeling.component";
 import { Page404Component } from "./page.404.component/page.404.component";
-export var routes = [
+export var ROUTES = [
     { path: '', redirectTo: 'instruction', pathMatch: 'full' },
     { path: 'instruction', component: InstructionComponent },
     { path: 'modeling', component: ModelingComponent },
@@ -23,7 +23,7 @@ var AppRoutingModule = (function () {
 AppRoutingModule = __decorate([
     NgModule({
         imports: [
-            RouterModule.forRoot(routes, { useHash: true })
+            RouterModule.forRoot(ROUTES, { useHash: true })
         ],
         exports: [
             RouterModule

@@ -12,6 +12,7 @@ import { MaterialModule } from "@angular/material";
 import { InputComponent } from "./inputs.component/input.component";
 import { SpinnerComponent } from "./progress.spinner/spinner.component";
 import { StubComponent } from "./stub.component/stub.component";
+import { ModalWindowComponent } from "./modal_window.component/modal_window.component";
 var SharedModule = (function () {
     function SharedModule() {
     }
@@ -28,11 +29,13 @@ SharedModule = __decorate([
             InputComponent,
             SpinnerComponent,
             StubComponent,
+            ModalWindowComponent
         ],
         exports: [
             InputComponent,
             SpinnerComponent,
-            StubComponent
+            StubComponent,
+            ModalWindowComponent
         ],
         providers: []
     })

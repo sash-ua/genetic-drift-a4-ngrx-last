@@ -41,8 +41,8 @@ const INIT_STATE: State = {
 };
 
 export function reducer(state: State = INIT_STATE, action: modeling.Actions): State{
-    console.log(state);
-    console.log(action);
+    // console.log(state);
+    // console.log(action);
     switch (action.type){
         case modeling.ActionTypes.INPUTS:
             return {
@@ -71,28 +71,24 @@ export function reducer(state: State = INIT_STATE, action: modeling.Actions): St
     }
 }
 
-
-
   // Because the data structure is defined within the reducer it is optimal to
   // locate our selector functions at this level. If store is to be thought of
-  // as a database, and reducers the tables, selectors can be considered the
+  // as a database, and REDUCERS the tables, selectors can be considered the
   // queries into said database. Remember to keep your selectors small and
   // focused so they can be combined and composed to fit each particular
   // use-case.
 
-export const getSVGComps  = (state: State): Array<string> => state.SVG_COMPS;
-export const getSVGAttrs  = (state: State): svgAttributes => state.SVG_ATTRS;
-export const getMWTitle  = (state: State): string => state.MW_TITLE;
-export const getToolTipPos  = (state: State): string => state.TOOLTIP_POS;
-export const getTooltipPd  = (state: State): number => state.TOOLTIP_D;
-export const getInputs  = (state: State): Inputs => state.INPUTS;
+export const GET_SVG_COMPS  = (state: State): Array<string> => state.SVG_COMPS;
+export const GET_SVG_ATTRS  = (state: State): svgAttributes => state.SVG_ATTRS;
+export const GET_MW_TITLE  = (state: State): string => state.MW_TITLE;
+export const GET_TOOLTIP_POS  = (state: State): string => state.TOOLTIP_POS;
+export const GET_TOOLTIP_D  = (state: State): number => state.TOOLTIP_D;
+export const GET_INPUTS  = (state: State): Inputs => state.INPUTS;
 
-export const getSpnTgl = (state: State): string => state.SPN_TGL;
-export const getSpnStVal = (state: State): number => state.SPN_STATE_VAL;
+export const GET_SPN_TGL = (state: State): string => state.SPN_TGL;
+export const GET_SPN_STATE_VAL = (state: State): number => state.SPN_STATE_VAL;
 
-// export const modelingTooltips = createSelector(toolTipPos, tooltipPd, (...s: any[])=> {return s});
-// export const getSMSAttr = createSelector(SVGAttrs, MWTitle, SVGComps, (...s: any[])=> {return s});
-export const getModelingConst = createSelector(getSVGComps, getSVGAttrs, getMWTitle, getToolTipPos, getTooltipPd, getSpnTgl, getSpnStVal, getInputs, (...s: any[])=> {return s});
+export const GET_MODELING_CONST = createSelector(GET_SVG_COMPS, GET_SVG_ATTRS, GET_MW_TITLE, GET_TOOLTIP_POS, GET_TOOLTIP_D, GET_SPN_TGL, GET_SPN_STATE_VAL, GET_INPUTS, (...s: any[])=> {return s});
 
 
 

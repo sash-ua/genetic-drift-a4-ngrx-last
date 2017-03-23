@@ -1,17 +1,14 @@
 import {Observable} from "rxjs/Observable";
-import { MdDialogRef, MdDialog, MdDialogConfig } from '@angular/material';
+import { MdDialogRef, MdDialog } from '@angular/material';
 import { Injectable } from '@angular/core';
-import {ModalWindowComponent} from "../core/modeling.component/modeling.component";
+import {ModalWindowComponent} from "../shared/modal_window.component/modal_window.component";
 
 @Injectable()
 export class DialogsService {
-    static dialog: MdDialog;
-    constructor(dialog: MdDialog) {
-        DialogsService.dialog = dialog;
-    }
+    constructor(private dialog: MdDialog) {}
 
     public confirm(title: string, element: any): Observable<boolean> {
-        let dialogRef: MdDialogRef<any> = DialogsService.dialog.open(ModalWindowComponent);
+        let dialogRef: MdDialogRef<any> = this.dialog.open(ModalWindowComponent);
         dialogRef.componentInstance.title = title;
         dialogRef.componentInstance.element = element;
         return dialogRef.afterClosed();

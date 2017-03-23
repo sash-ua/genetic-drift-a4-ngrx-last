@@ -1,10 +1,10 @@
 import { StoreService } from "../services/store.service";
 export var ActionTypes = {
-    SPNTGL_IN: StoreService.type('[Modeling] in st_1 Spinner'),
-    SPNTGL_OUT: StoreService.type('[Modeling] out st_4 Spinner'),
-    SPNSTVAL_ST_0: StoreService.type('[Modeling] 0 Spinner'),
-    SPNSTVAL_ST_1: StoreService.type('[Modeling] 2 Spinner'),
-    SPNSTVAL_ST_2: StoreService.type('[Modeling] 3 Spinner'),
+    SPNTGL_IN: StoreService.type('[Modeling] in,rndm-in Spinner'),
+    SPNTGL_OUT: StoreService.type('[Modeling] out,100-out Spinner'),
+    SPNSTVAL_ST_0: StoreService.type('[Modeling] out,0-0 Spinner'),
+    SPNSTVAL_ST_1: StoreService.type('[Modeling] in,rndm-1 Spinner'),
+    SPNSTVAL_ST_2: StoreService.type('[Modeling] in,rndm-2 Spinner'),
     INPUTS: StoreService.type('[Modeling] get inputs'),
 };
 var GetInputs = (function () {

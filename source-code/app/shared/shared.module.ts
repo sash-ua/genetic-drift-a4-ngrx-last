@@ -6,6 +6,7 @@ import {MaterialModule, MdButtonModule} from "@angular/material";
 import {InputComponent} from "./inputs.component/input.component";
 import {SpinnerComponent} from "./progress.spinner/spinner.component";
 import {StubComponent} from "./stub.component/stub.component";
+import {ModalWindowComponent} from "./modal_window.component/modal_window.component";
 
 @NgModule({
     imports: [
@@ -17,12 +18,13 @@ import {StubComponent} from "./stub.component/stub.component";
         InputComponent,
         SpinnerComponent,
         StubComponent,
-
+        ModalWindowComponent
     ],
     exports: [
         InputComponent,
         SpinnerComponent,
-        StubComponent
+        StubComponent,
+        ModalWindowComponent
     ],
     providers: []
 })
