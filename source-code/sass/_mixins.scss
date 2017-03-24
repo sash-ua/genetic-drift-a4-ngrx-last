@@ -33,8 +33,8 @@ $uni-font-sz: calc(1em + 1vw);
 
     // Use md-color to extract individual colors from a palette as necessary.
     .candy-carousel {
-        background-color: md-color($primary);
-        border-color: md-color($accent, A400);
+        background-color: mat-color($primary);
+        border-color: mat-color($accent, A400);
     }
 }
 

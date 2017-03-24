@@ -1,12 +1,18 @@
-# 1.0.0-beta.1 (2017-03-23)
+# 1.0.0-beta.2 (2017-03-24)
 
 ### CHANGES
 
-* Migrate on Angular 4.0.0-rc.6
+* Migrate to Angular 4.0.0
+ 
+ 1.0.0-beta.1 (2017-03-23)
+
+### CHANGES
+
+* Migrate to Angular 4.0.0-rc.6
 
 ### Code Refactoring
 
-* **CSS:**Removed redundant css code
+* **CSS:** removed redundant css code
 
 
 
