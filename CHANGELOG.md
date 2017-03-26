@@ -4,7 +4,7 @@
 
 * Migrate to Angular 4.0.0
  
- 1.0.0-beta.1 (2017-03-23)
+# 1.0.0-beta.1 (2017-03-23)
 
 ### CHANGES
 
