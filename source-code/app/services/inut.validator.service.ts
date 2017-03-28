@@ -1,15 +1,25 @@
 import { Injectable } from '@angular/core';
 import {FormControl, AbstractControl, Validators} from "@angular/forms";
 
-// Input string validation. ThefFirst stage, second's in the specific.service.applInputsData
+// Input string validation. The First stage, second's in the specific.service.applInputsData
 @Injectable()
 export class InputValidatorService {
     constructor(){}
     inputControl(inputL: HTMLElement, cond: Range){
-        return (this.inputConds(new FormControl(inputL,  Validators.compose([
-            Validators.required,
-            Validators.pattern('([0-9]+)|([0-9]+\.[0-9]+)')
-        ])), cond)) ? inputL : null;
+        return (
+            this.inputConds(
+                new FormControl(
+                    inputL,
+                    Validators.compose([
+                        Validators.required,
+                        Validators.pattern('([0-9]+)|([0-9]+\.[0-9]+)')
+                    ])
+                ),
+                cond
+            )
+        )
+            ? inputL
+            : null;
     }
 
     inputConds(control: AbstractControl, cond: Range): boolean {

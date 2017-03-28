@@ -47,7 +47,7 @@ var ModelingComponent = (function () {
             var SVG = this.DOMS.findHTMLElement(TARGET, 'svg');
             if (SVG.getAttribute('data-D3-graph')) {
                 var SVGClONE = SVG.cloneNode(true);
-                this.DOMS.svgAttrSetter(SVGClONE, this.SVGATTRS);
+                this.DOMS.attrSetter(SVGClONE, this.SVGATTRS);
                 this.DS.confirm(this.MWTITLE, SVGClONE);
             }
         }
@@ -60,11 +60,10 @@ var ModelingComponent = (function () {
         this.render(this.inputs, GV);
         // Button 'Lunch' handler. Produce D3 Graph after clicking and manage spinner.
         Observable.fromEvent(this.launch.nativeElement, 'click')
-            .do(function () {
-            _this.store.dispatch(new SpnStage0);
-            setTimeout(function () {
-                _this.store.dispatch(new StartSpinnerAnim);
-            }, 4);
+            .let(function (obs) {
+            return obs.do(function () { _this.store.dispatch(new SpnStage0); })
+                .debounceTime(4)
+                .do(function () { _this.store.dispatch(new StartSpinnerAnim); });
         })
             .debounceTime(300)
             .do(function () {
@@ -73,11 +72,10 @@ var ModelingComponent = (function () {
             _this.render(_this.inputs, GV);
         })
             .debounceTime(300)
-            .do(function () {
-            _this.store.dispatch(new SpnStage3);
-            setTimeout(function () {
-                _this.store.dispatch(new EndSpinnerAnim);
-            }, 100);
+            .let(function (obs) {
+            return obs.do(function () { _this.store.dispatch(new SpnStage3); })
+                .debounceTime(100)
+                .do(function () { _this.store.dispatch(new EndSpinnerAnim); });
         })
             .subscribe(function () { }, function (e) { _this.ES.handleError(e); });
     };
@@ -125,7 +123,7 @@ ModelingComponent = __decorate([
             ErrorHandlerService,
             SpecificService,
             DialogsService,
-            DOMService
+            DOMService,
         ]
     }),
     __metadata("design:paramtypes", [D3Service,

@@ -14,20 +14,26 @@ var DOMService = (function () {
     }
     // Produce true if one of the tags name array is compatible to the event.target.tagName.
     DOMService.prototype.compare = function (target, tagsArr) {
-        return tagsArr.some(function (value) { return target.tagName === value; });
+        var elName = target.tagName.toLowerCase();
+        return tagsArr.some(function (value) { return elName === value; });
     };
     // Set SVG attr-s
-    DOMService.prototype.svgAttrSetter = function (svg, attrs) {
+    DOMService.prototype.attrSetter = function (svg, attrs) {
         var _this = this;
+        console.log(this.renderer, svg);
         attrs.forEach(function (v) { return _this.renderer.setAttribute(svg, v[0], v[1]); });
     };
     // Find parent HTML element by tag name.
     DOMService.prototype.findHTMLElement = function (el, parentName) {
-        return (el.nodeName === parentName)
-            ? el
-            : (el.parentNode.nodeName === parentName)
-                ? el.parentNode
-                : this.findHTMLElement(el.parentNode, parentName);
+        console.log(el.nodeName);
+        if (el.nodeName === parentName) {
+            return el;
+        }
+        else {
+            var PN = this.renderer.parentNode(el);
+            console.log(this.renderer.parentNode(el), el);
+            return (PN.nodeName === parentName) ? PN : this.findHTMLElement(PN, parentName);
+        }
     };
     return DOMService;
 }());

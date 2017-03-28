@@ -9,7 +9,7 @@ var gulp = require('gulp'),
     // uglify = require('gulp-uglify'),
     sourcemaps = require('gulp-sourcemaps'),
     cssmin = require('gulp-clean-css'),
-    // uncss = require('gulp-uncss'),
+    uncss = require('gulp-uncss'),
     // imagemin = require('gulp-imagemin'),
     // pngquant = require('imagemin-pngquant'),
     //ignore = require('gulp-ignore'),
@@ -97,6 +97,11 @@ gulp.task('css:aot', function () {
         //    cascade: false
         //}))
         .pipe(gulp.dest(path.compiled.style))
+        // .pipe(uncss({
+        //     html: ['index.html'],
+        //     ignore       : ['#added_at_runtime', /test\-[0-9]+/],
+        //     timeout      : 1000,
+        // }))
 		.pipe(cssmin())
 		.pipe(gulp.dest(path.aot.style))
         .pipe(reload({stream: true}));

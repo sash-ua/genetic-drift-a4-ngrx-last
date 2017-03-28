@@ -6,6 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import { Injectable } from '@angular/core';
 import { Observable } from "rxjs/Observable";
+import 'rxjs/add/observable/throw';
 var ErrorHandlerService = (function () {
     function ErrorHandlerService() {
     }

@@ -1,5 +1,5 @@
 import {
-    Component, style, HostListener, HostBinding, ViewChild, ElementRef, AfterViewInit
+    Component, HostListener, HostBinding, ViewChild, ElementRef, AfterViewInit
 } from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import 'rxjs/add/operator/do';
@@ -20,7 +20,6 @@ import {
     StartSpinnerAnim, EndSpinnerAnim, SpnStage0, SpnStage2,
     SpnStage3, GetInputs
 } from "../../store.actions/modeling.action";
-import {combineLatest} from "rxjs/observable/combineLatest";
 
 @Component({
     moduleId: module.id,
@@ -62,7 +61,8 @@ import {combineLatest} from "rxjs/observable/combineLatest";
         ErrorHandlerService,
         SpecificService,
         DialogsService,
-        DOMService
+        DOMService,
+
     ]
 })
 export class ModelingComponent implements AfterViewInit{
@@ -82,7 +82,7 @@ export class ModelingComponent implements AfterViewInit{
         public SS: SpecificService,
         public DS: DialogsService,
         public DOMS: DOMService,
-        private store: Store<rootReducer.State>
+        private store: Store<rootReducer.State>,
     ){
         // Can be used combineLatest()
         this.store.select(rootReducer.MODELING_INIT)
@@ -106,7 +106,7 @@ export class ModelingComponent implements AfterViewInit{
             const SVG = this.DOMS.findHTMLElement(TARGET, 'svg');
             if(SVG.getAttribute('data-D3-graph')){
                 const SVGClONE = SVG.cloneNode(true);
-                this.DOMS.svgAttrSetter(SVGClONE, this.SVGATTRS);
+                this.DOMS.attrSetter(SVGClONE, this.SVGATTRS);
                 this.DS.confirm(this.MWTITLE, SVGClONE)
             }
         }
@@ -118,12 +118,11 @@ export class ModelingComponent implements AfterViewInit{
         this.render(this.inputs, GV);
         // Button 'Lunch' handler. Produce D3 Graph after clicking and manage spinner.
         Observable.fromEvent(this.launch.nativeElement, 'click')
-            .do(() => {
-                this.store.dispatch(new SpnStage0);
-                setTimeout(() => {
-                    this.store.dispatch(new StartSpinnerAnim);
-                }, 4)
-            })
+            .let((obs: Observable<{}>) =>
+                obs.do(()=>{this.store.dispatch(new SpnStage0);})
+                    .debounceTime(4)
+                    .do(()=>{this.store.dispatch(new StartSpinnerAnim);})
+            )
             .debounceTime(300)
             .do(()=> {
                 this.store.dispatch(new SpnStage2);
@@ -131,12 +130,11 @@ export class ModelingComponent implements AfterViewInit{
                 this.render(this.inputs, GV);
             })
             .debounceTime(300)
-            .do(() => {
-                this.store.dispatch(new SpnStage3);
-                setTimeout(() => {
-                    this.store.dispatch(new EndSpinnerAnim);
-                }, 100)
-            })
+            .let((obs: Observable<any>) =>
+                obs.do(()=>{this.store.dispatch(new SpnStage3);})
+                    .debounceTime(100)
+                    .do(()=>{this.store.dispatch(new EndSpinnerAnim);})
+            )
             .subscribe(
                 () => {},
                 (e: Error) => {this.ES.handleError(e);}

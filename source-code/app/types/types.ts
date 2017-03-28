@@ -4,5 +4,7 @@ export type Range = Array<number>;
 export type svgAttributes = [Array<string | number>];
 export type AnimationT = string | { [key: string]: string | number; }
 export type AnimationStylesT = string | { [key: string]: string | number; } | (string | { [key: string]: string | number; })[];
+
+
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License.

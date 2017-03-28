@@ -3,7 +3,7 @@ import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import {AppModule} from "./app.module";
 import {enableDebugTools} from '@angular/platform-browser';
-enableProdMode();
+// enableProdMode();
 // Compile and launch the module
 platformBrowserDynamic().bootstrapModule(AppModule);
     // .then((appRef) => {

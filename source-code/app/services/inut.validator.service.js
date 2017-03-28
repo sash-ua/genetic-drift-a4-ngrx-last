@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { Injectable } from '@angular/core';
 import { FormControl, Validators } from "@angular/forms";
-// Input string validation. ThefFirst stage, second's in the specific.service.applInputsData
+// Input string validation. The First stage, second's in the specific.service.applInputsData
 var InputValidatorService = (function () {
     function InputValidatorService() {
     }
@@ -17,7 +17,9 @@ var InputValidatorService = (function () {
         return (this.inputConds(new FormControl(inputL, Validators.compose([
             Validators.required,
             Validators.pattern('([0-9]+)|([0-9]+\.[0-9]+)')
-        ])), cond)) ? inputL : null;
+        ])), cond))
+            ? inputL
+            : null;
     };
     InputValidatorService.prototype.inputConds = function (control, cond) {
         var v = control.value;

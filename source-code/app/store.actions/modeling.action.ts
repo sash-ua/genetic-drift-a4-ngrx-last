@@ -13,7 +13,9 @@ export const ActionTypes = {
 
 export class GetInputs implements Action {
     type = ActionTypes.INPUTS;
-    constructor(public payload: Array<number>){}
+    constructor(
+        public payload: Array<number>
+    ){}
 }
 export class StartSpinnerAnim implements Action {
     type = ActionTypes.SPNTGL_IN;

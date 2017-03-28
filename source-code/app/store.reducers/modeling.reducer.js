@@ -14,7 +14,6 @@ var MODELING_CONSTS = {
     TOOLTIP_D: 100,
     TOOLTIP_POS: 'above',
     MW_TITLE: "Graph",
-    SVG_ATTRS: [['preserveAspectRatio', 'xMidYMid meet'], ['viewBox', '0 0 305 305'], ['height', '100%'], ['width', SpecificService.dimension(0.35, 0.4)]],
     SVG_COMPS: ['svg', 'g', 'tspan', 'text', 'path']
 };
 var INIT_STATE = __assign({ SPN_TGL: 'out', SPN_STATE_VAL: 0, INPUTS: [
@@ -25,24 +24,42 @@ var INIT_STATE = __assign({ SPN_TGL: 'out', SPN_STATE_VAL: 0, INPUTS: [
         { preDefData: 0.1, hint: 'Bottle Neck Probability', dvdrColor: 'primary', interval: [0, 1], toolTip: 'Value from 0 to 1, for ex. 0.2' },
         { preDefData: 0.15, hint: 'Natural decline', dvdrColor: 'primary', interval: [0, 1], toolTip: 'Value from 0 to 1, for ex. 0.77' },
         { preDefData: 0.2, hint: 'Natural growth', dvdrColor: 'primary', interval: [0, 1], toolTip: 'Value from 0 to 1, for ex. 0.09' }
-    ] }, MODELING_CONSTS);
+    ], SVG_ATTRS: [['preserveAspectRatio', 'xMidYMid meet'], ['viewBox', '0 0 305 305'], ['height', '100%'], ['width', SpecificService.dimension(0.35, 0.4)]] }, MODELING_CONSTS);
 export function reducer(state, action) {
     if (state === void 0) { state = INIT_STATE; }
     // console.log(state);
     // console.log(action);
     switch (action.type) {
         case modeling.ActionTypes.INPUTS:
-            return __assign({ SPN_TGL: 'in', SPN_STATE_VAL: ComputationService.rndmGen(25, 50), INPUTS: SpecificService.applInputsData(state.INPUTS, action.payload) }, MODELING_CONSTS);
+            return __assign({ SPN_TGL: 'in', SPN_STATE_VAL: ComputationService.rndmGen(25, 50), INPUTS: SpecificService.applInputsData(state.INPUTS, action.payload), SVG_ATTRS: [['preserveAspectRatio', 'xMidYMid meet'],
+                    ['viewBox', '0 0 305 305'],
+                    ['height', '100%'],
+                    ['width', SpecificService.dimension(0.35, 0.4)]] }, MODELING_CONSTS);
         case modeling.ActionTypes.SPNTGL_IN:
-            return __assign({ SPN_TGL: 'in', SPN_STATE_VAL: ComputationService.rndmGen(15, 50), INPUTS: state.INPUTS }, MODELING_CONSTS);
+            return __assign({ SPN_TGL: 'in', SPN_STATE_VAL: ComputationService.rndmGen(15, 50), INPUTS: state.INPUTS, SVG_ATTRS: [['preserveAspectRatio', 'xMidYMid meet'],
+                    ['viewBox', '0 0 305 305'],
+                    ['height', '100%'],
+                    ['width', SpecificService.dimension(0.35, 0.4)]] }, MODELING_CONSTS);
         case modeling.ActionTypes.SPNTGL_OUT:
-            return __assign({ SPN_TGL: 'out', SPN_STATE_VAL: 100, INPUTS: state.INPUTS }, MODELING_CONSTS);
+            return __assign({ SPN_TGL: 'out', SPN_STATE_VAL: 100, INPUTS: state.INPUTS, SVG_ATTRS: [['preserveAspectRatio', 'xMidYMid meet'],
+                    ['viewBox', '0 0 305 305'],
+                    ['height', '100%'],
+                    ['width', SpecificService.dimension(0.35, 0.4)]] }, MODELING_CONSTS);
         case modeling.ActionTypes.SPNSTVAL_ST_0:
-            return __assign({ SPN_TGL: 'out', SPN_STATE_VAL: 0, INPUTS: state.INPUTS }, MODELING_CONSTS);
+            return __assign({ SPN_TGL: 'out', SPN_STATE_VAL: 0, INPUTS: state.INPUTS, SVG_ATTRS: [['preserveAspectRatio', 'xMidYMid meet'],
+                    ['viewBox', '0 0 305 305'],
+                    ['height', '100%'],
+                    ['width', SpecificService.dimension(0.35, 0.4)]] }, MODELING_CONSTS);
         case modeling.ActionTypes.SPNSTVAL_ST_1:
-            return __assign({ SPN_TGL: 'in', SPN_STATE_VAL: ComputationService.rndmGen(55, 70), INPUTS: state.INPUTS }, MODELING_CONSTS);
+            return __assign({ SPN_TGL: 'in', SPN_STATE_VAL: ComputationService.rndmGen(55, 70), INPUTS: state.INPUTS, SVG_ATTRS: [['preserveAspectRatio', 'xMidYMid meet'],
+                    ['viewBox', '0 0 305 305'],
+                    ['height', '100%'],
+                    ['width', SpecificService.dimension(0.35, 0.4)]] }, MODELING_CONSTS);
         case modeling.ActionTypes.SPNSTVAL_ST_2:
-            return __assign({ SPN_TGL: 'in', SPN_STATE_VAL: ComputationService.rndmGen(75, 95), INPUTS: state.INPUTS }, MODELING_CONSTS);
+            return __assign({ SPN_TGL: 'in', SPN_STATE_VAL: ComputationService.rndmGen(75, 95), INPUTS: state.INPUTS, SVG_ATTRS: [['preserveAspectRatio', 'xMidYMid meet'],
+                    ['viewBox', '0 0 305 305'],
+                    ['height', '100%'],
+                    ['width', SpecificService.dimension(0.35, 0.4)]] }, MODELING_CONSTS);
         default:
             return state;
     }
