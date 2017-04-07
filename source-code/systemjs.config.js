@@ -34,7 +34,7 @@
             // other libraries
             'rxjs':                      'npm:rxjs',
             'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
-            'd3': 'npm:D3/build',
+            'd3': 'npm:d3/build',
             'ts': 'npm:typescript/src/typescript.js',
             'hammerjs': 'npm:hammerjs/hammer.js'
         },
@@ -52,7 +52,7 @@
                 defaultExtension: 'js'
             },
             'd3': {
-                main: './D3',
+                main: './d3',
                 defaultExtension: 'js'
             }
         }

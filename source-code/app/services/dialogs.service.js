@@ -7,15 +7,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { MdDialog } from '@angular/material';
 import { Injectable } from '@angular/core';
 import { ModalWindowComponent } from "../shared/modal_window.component/modal_window.component";
 var DialogsService = (function () {
-    function DialogsService(dialog) {
-        this.dialog = dialog;
+    function DialogsService() {
     }
-    DialogsService.prototype.confirm = function (title, element) {
-        var dialogRef = this.dialog.open(ModalWindowComponent);
+    DialogsService.prototype.confirm = function (title, element, dialog) {
+        var dialogRef = dialog.open(ModalWindowComponent);
         dialogRef.componentInstance.title = title;
         dialogRef.componentInstance.element = element;
         return dialogRef.afterClosed();
@@ -24,7 +22,7 @@ var DialogsService = (function () {
 }());
 DialogsService = __decorate([
     Injectable(),
-    __metadata("design:paramtypes", [MdDialog])
+    __metadata("design:paramtypes", [])
 ], DialogsService);
 export { DialogsService };
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.

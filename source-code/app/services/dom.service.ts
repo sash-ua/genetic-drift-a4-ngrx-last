@@ -1,4 +1,6 @@
 import {Injectable, Renderer2} from '@angular/core';
+import {ArrAttrSetter, AttrSetter} from "../types/types";
+
 
 @Injectable()
 export class DOMService {
@@ -8,26 +10,24 @@ export class DOMService {
 
     // Produce true if one of the tags name array is compatible to the event.target.tagName.
     compare(target: HTMLElement, tagsArr: Array<string>): boolean {
-        const elName: string = target.tagName.toLowerCase();
-        return tagsArr.some((value: string) => elName === value);
+        return tagsArr.some((value: string) => target.tagName.toLowerCase() === value);
     }
     // Set SVG attr-s
-    attrSetter(svg: Node | HTMLElement, attrs: Array<string>[]): void {
-        console.log(this.renderer, svg);
-        attrs.forEach((v: string[]) => this.renderer.setAttribute(svg, v[0], v[1]));
+    attrSetter(el: Node | HTMLElement, attrs: ArrAttrSetter, renderer: Renderer2): void {
+        attrs.forEach((v: AttrSetter) => renderer.setAttribute(el, v[0], v[1]));
     }
-    // Find parent HTML element by tag name.
-    findHTMLElement<T extends  Node | HTMLElement>(el: T, parentName: string): T {
-        console.log(el.nodeName);
-        if (el.nodeName  === parentName){
-            return el;
+    // Find HTML element by tag name, up from el.
+    findHTMLElement<T extends  Node | HTMLElement>(el: T, parentName: string, renderer: Renderer2): T {
+        if(el !== null){
+            if (el.nodeName.toLowerCase() === parentName){
+                return el;
+            } else {
+                return this.findHTMLElement(renderer.parentNode(el), parentName, renderer);
+            }
         } else {
-            const PN = this.renderer.parentNode(el);
-            console.log(this.renderer.parentNode(el), el);
-            return (PN.nodeName === parentName) ? PN : this.findHTMLElement(PN, parentName);
+            return null;
         }
     }
-
 }
 
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.

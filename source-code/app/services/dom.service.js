@@ -14,25 +14,24 @@ var DOMService = (function () {
     }
     // Produce true if one of the tags name array is compatible to the event.target.tagName.
     DOMService.prototype.compare = function (target, tagsArr) {
-        var elName = target.tagName.toLowerCase();
-        return tagsArr.some(function (value) { return elName === value; });
+        return tagsArr.some(function (value) { return target.tagName.toLowerCase() === value; });
     };
     // Set SVG attr-s
-    DOMService.prototype.attrSetter = function (svg, attrs) {
-        var _this = this;
-        console.log(this.renderer, svg);
-        attrs.forEach(function (v) { return _this.renderer.setAttribute(svg, v[0], v[1]); });
+    DOMService.prototype.attrSetter = function (el, attrs, renderer) {
+        attrs.forEach(function (v) { return renderer.setAttribute(el, v[0], v[1]); });
     };
-    // Find parent HTML element by tag name.
-    DOMService.prototype.findHTMLElement = function (el, parentName) {
-        console.log(el.nodeName);
-        if (el.nodeName === parentName) {
-            return el;
+    // Find HTML element by tag name, up from el.
+    DOMService.prototype.findHTMLElement = function (el, parentName, renderer) {
+        if (el !== null) {
+            if (el.nodeName.toLowerCase() === parentName) {
+                return el;
+            }
+            else {
+                return this.findHTMLElement(renderer.parentNode(el), parentName, renderer);
+            }
         }
         else {
-            var PN = this.renderer.parentNode(el);
-            console.log(this.renderer.parentNode(el), el);
-            return (PN.nodeName === parentName) ? PN : this.findHTMLElement(PN, parentName);
+            return null;
         }
     };
     return DOMService;

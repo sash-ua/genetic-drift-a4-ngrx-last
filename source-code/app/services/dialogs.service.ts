@@ -5,10 +5,9 @@ import {ModalWindowComponent} from "../shared/modal_window.component/modal_windo
 
 @Injectable()
 export class DialogsService {
-    constructor(private dialog: MdDialog) {}
-
-    public confirm(title: string, element: any): Observable<boolean> {
-        let dialogRef: MdDialogRef<any> = this.dialog.open(ModalWindowComponent);
+    constructor() {}
+    confirm(title: string, element: any, dialog: MdDialog): Observable<boolean> {
+        let dialogRef: MdDialogRef<any> = dialog.open(ModalWindowComponent);
         dialogRef.componentInstance.title = title;
         dialogRef.componentInstance.element = element;
         return dialogRef.afterClosed();

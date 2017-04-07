@@ -1,12 +1,12 @@
 import {StoreService} from "./store.service";
 
-describe('store services',()=>{
+describe('Store services: ',()=>{
     StoreService.typeCache = {label1:'text'};
-    it('StoreService-type -> type', ()=>{
+    it('type -> type', ()=>{
         let z = StoreService.type('test');
         expect(z).toBe('test');
     });
-    it('StoreService - type -> error', ()=>{
+    it('type -> error', ()=>{
         let l = 'label1';
         expect(()=>{
             StoreService.type(l);

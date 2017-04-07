@@ -9,7 +9,7 @@ import * as d3 from "d3";
 var D3Service = (function () {
     function D3Service() {
     }
-    D3Service.prototype.drawChart = function (data, x_label, y_label, legend_values, x_max, appendTo, wFrame, hFrame) {
+    D3Service.prototype.drawChart = function (data, x_label, y_label, appendTo, legend_values, x_max, wFrame, hFrame) {
         if (wFrame === void 0) { wFrame = 300; }
         if (hFrame === void 0) { hFrame = 300; }
         var margin = { top: 20, right: 20, bottom: 50, left: 50 }, width = wFrame - margin.left - margin.right, height = hFrame - margin.top - margin.bottom;

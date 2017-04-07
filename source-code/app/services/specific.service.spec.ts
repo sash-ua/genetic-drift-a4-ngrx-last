@@ -16,9 +16,9 @@ const INPUTS = [
     {preDefData: 0.1, hint: 'Bottle Neck Probability', dvdrColor: 'primary', interval: [0, 1], toolTip: 'Value from 0 to 1, for ex. 0.2'},
     {preDefData: 0.15, hint: 'Natural decline', dvdrColor: 'primary', interval: [0, 1], toolTip: 'Value from 0 to 1, for ex. 0.77'},
     {preDefData: 0.2, hint: 'Natural growth', dvdrColor: 'primary', interval: [0, 1], toolTip: 'Value from 0 to 1, for ex. 0.09'}
-    ]
+    ];
 
-describe('Specific service', ()=>{
+describe('Specific service: ', ()=>{
     beforeEach(() => {
         TestBed.configureTestingModule({
             declarations: [
@@ -38,15 +38,15 @@ describe('Specific service', ()=>{
 
     });
 
-    it('Specific service - collectionDataInputs', (inject([SpecificService], (service: SpecificService)=>{
+    it('collectionDataInputs', (inject([SpecificService], (service: SpecificService)=>{
         let x = service.collectionDataInputs('input');
         expect(x).toEqual([1000,11,12,0.2,0.5,0.9]);
     })));
-    it('Specific service - isExist', (inject([SpecificService], (service: SpecificService)=>{
+    it('isExist', (inject([SpecificService], (service: SpecificService)=>{
         expect(service.isExist('input')).toEqual('input');
         expect(service.isExist('')).toBeNull();
     })));
-    it('Specific service - applInputsData', (inject([SpecificService], (service: SpecificService)=>{
+    it('applInputsData', (inject([SpecificService], (service: SpecificService)=>{
         let x = service.collectionDataInputs('input');
         expect(SpecificService.applInputsData(INPUTS, x)).toEqual(
             [ { preDefData: 1000, hint: 'Population', dvdrColor: 'warn', interval: [ 2 ], toolTip: 'Integer number' +
@@ -59,7 +59,7 @@ describe('Specific service', ()=>{
                 { preDefData: 0.2, hint: 'Natural growth', dvdrColor: 'primary', interval: [ 0, 1 ], toolTip: 'Value from 0 to 1, for ex. 0.09' } ]
         );
     })));
-    it('Specific service - dimension', ()=>{
+    it('dimension', ()=>{
         const WW = window.innerWidth
             || document.documentElement.clientWidth
             || document.body.clientWidth;

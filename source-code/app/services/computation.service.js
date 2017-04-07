@@ -11,6 +11,10 @@ import { Injectable } from '@angular/core';
 var ComputationService = (function () {
     function ComputationService() {
     }
+    // Return random number from min to max (ex. max).
+    ComputationService.rndmGen = function (min, max) {
+        return Math.floor(Math.random() * (max - min) + min);
+    };
     // Array generator
     ComputationService.prototype.arrG = function (func) {
         var arg = [];
@@ -22,16 +26,12 @@ var ComputationService = (function () {
         };
     };
     ;
-    // Return random number from min to max (ex. max).
-    ComputationService.rndmGen = function (min, max) {
-        return Math.floor(Math.random() * (max - min) + min);
-    };
     // Randomly generate true  / false (heads / tail).
     ComputationService.prototype.tossing1 = function (p) {
         return (Math.random() <= p);
     };
     ;
-    // Calculation of results from function 'fn'. 'fn' return true / false,
+    // Calculation of results from function 'fn'. 'fn ' return true / false,
     // bounchCoin1 returns percentage of 'true' in 'edge' cases. Result (interval[0, 1]).
     ComputationService.prototype.bounchCoin1 = function (_a) {
         var fn = _a[0], edge = _a[1], p = _a[2];
@@ -56,7 +56,7 @@ var ComputationService = (function () {
         }, 0));
     };
     ;
-    // BNF & MD interval[0, 1].
+    // growth, BNF & MD are from interval[0, 1].
     ComputationService.prototype.NRandom = function (_a) {
         var n0 = _a[0], growth = _a[1], BNF = _a[2], MD = _a[3];
         return Math.random() < BNF

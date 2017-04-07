@@ -19,7 +19,6 @@ module.exports = function(config) {
         'karma-coverage',
         'karma-chrome-launcher',
         'karma-htmlfile-reporter',
-        'karma-phantomjs-launcher',
         'karma-*'
     ],
       // list of files / patterns to load in the browser/testing environment,
@@ -109,11 +108,10 @@ module.exports = function(config) {
         file: 'coverage.json'
     },
       // test results reporter to use
-      // possible values: 'dots', 'progress'
       // available reporters: https:  //npmjs.org/browse/keyword/karma-reporter
       // Coverage reporter generates the coverage
       // reporters:  ['progress', 'dots', 'coverage'],
-    reporters: ['progress', 'html', 'coverage'],
+    reporters: ['dots', 'progress', 'html', 'coverage'],
       // web server port
     port: 9876,
     

@@ -27,7 +27,7 @@ export function reducer(state: any, action: any) {
 
 export const MODELING_STATE = (state: State) => state.modeling;
 
-export const MODELING_INIT = createSelector(MODELING_STATE, fromModeling.GET_MODELING_CONST);
+export const MODELING_INIT = createSelector(MODELING_STATE, fromModeling.GET_MODELING_STATE);
 
 
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.

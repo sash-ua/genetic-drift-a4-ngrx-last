@@ -6,7 +6,7 @@ import {DebugElement, Input} from "@angular/core";
 import {By} from "@angular/platform-browser";
 import {InputValidatorService} from "./inut.validator.service";
 
-describe('InputValidatorService',()=>{
+describe('InputValidatorService: ',()=>{
     let wr: HTMLElement, r: HTMLElement;
     beforeEach(()=>{
         TestBed.configureTestingModule({
@@ -30,11 +30,11 @@ describe('InputValidatorService',()=>{
         r = deR.nativeElement;
     });
 
-    it('InputValidatorService - inputControl', (inject([InputValidatorService], (service: InputValidatorService)=>{
+    it('inputControl', (inject([InputValidatorService], (service: InputValidatorService)=>{
         expect(service.inputControl(wr.value, [1])).toBeNull();
         expect(service.inputControl(r.value, [0, 1])).toEqual(r.value);
     })));
-    it('InputValidatorService - inputConds', (inject([InputValidatorService], (serv: InputValidatorService)=>{
+    it('inputConds', (inject([InputValidatorService], (serv: InputValidatorService)=>{
         let z: AbstractControl = new FormControl(
             wr.value,
             Validators.compose([

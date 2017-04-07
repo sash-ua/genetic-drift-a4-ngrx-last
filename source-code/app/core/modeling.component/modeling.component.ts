@@ -1,5 +1,5 @@
 import {
-    Component, HostListener, HostBinding, ViewChild, ElementRef, AfterViewInit
+    Component, HostListener, HostBinding, ViewChild, ElementRef, AfterViewInit, OnInit, Renderer2
 } from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import 'rxjs/add/operator/do';
@@ -9,7 +9,7 @@ import {D3Service} from "../../services/d3.service";
 import {ComputationService} from "../../services/computation.service";
 import {ErrorHandlerService} from "../../services/error.handler.service";
 import {DialogsService} from "../../services/dialogs.service";
-import {Inputs, svgAttributes} from "../../types/types";
+import {Inputs, ArrAttrSetter} from "../../types/types";
 import {DOMService} from "../../services/dom.service";
 import {AnimationsServices} from "../../services/animations.service";
 import {SpecificService} from "../../services/specific.service";
@@ -20,27 +20,30 @@ import {
     StartSpinnerAnim, EndSpinnerAnim, SpnStage0, SpnStage2,
     SpnStage3, GetInputs
 } from "../../store.actions/modeling.action";
+import {MdDialog} from "@angular/material";
+import {ModalWindowComponent} from "../../shared/modal_window.component/modal_window.component";
 
 @Component({
     moduleId: module.id,
+    selector: 'md-comp',
     template:
     `<section class="wrapper wrapper__modeling">
-        <h2>Visualization</h2>
-        <form>
-            <app-input *ngFor="let input of inputs;" 
-                [app-input-data]="input"
-                [mdTooltip]="input.toolTip"
-                [mdTooltipPosition]="TOOLTIPPOS"
-                [mdTooltipShowDelay]="TOOLTIPD"
-                class="modeling__inputs">
-            </app-input>
-            <button md-raised-button class="modeling__btn" #launch>Launch</button>
-            <progress-spinner-i [spinner-start-val]="spStVal"
-                                [@openHide]="spTgl">   
-            </progress-spinner-i>       
-        </form>
-        <div id="graphView" #graphView></div>
-    </section>`,
+            <h2>Visualization</h2>
+            <form>
+                <app-input *ngFor="let input of inputs;"
+                           [app-input-data]="input"
+                           [mdTooltip]="input.toolTip"
+                           [mdTooltipPosition]="TOOLTIP_POS"
+                           [mdTooltipShowDelay]="TOOLTIP_D"
+                           class="modeling__inputs">
+                </app-input>
+                <button md-raised-button class="modeling__btn" #launch>Launch</button>
+                <progress-spinner-i [spinner-start-val]="spn_state_val"
+                                    [@openHide]="spn_tgl">
+                </progress-spinner-i>
+            </form>
+            <div id="graphView" #graphView></div>
+        </section>`,
     styleUrls: ['modeling.component.css'],
     animations: [
         AnimationsServices.animatonThreeStates(
@@ -62,18 +65,18 @@ import {
         SpecificService,
         DialogsService,
         DOMService,
-
+        D3Service
     ]
 })
 export class ModelingComponent implements AfterViewInit{
-    MWTITLE: string ;
-    SVGATTRS: svgAttributes;
-    SVGCOMPS: Array<string>;
-    TOOLTIPD: number;
-    TOOLTIPPOS: string;
+    MW_TITLE: string ;
+    svg_attrs: ArrAttrSetter;
+    SVG_COMPS: Array<string>;
+    TOOLTIP_D: number;
+    TOOLTIP_POS: string;
     inputs: Inputs;
-    spTgl: string;
-    spStVal: number;
+    spn_tgl: string;
+    spn_state_val: number;
 
     constructor(
         public D3: D3Service,
@@ -82,13 +85,15 @@ export class ModelingComponent implements AfterViewInit{
         public SS: SpecificService,
         public DS: DialogsService,
         public DOMS: DOMService,
-        private store: Store<rootReducer.State>,
+        protected store: Store<rootReducer.State>,
+        protected renderer: Renderer2,
+        protected dialog: MdDialog
     ){
-        // Can be used combineLatest()
+// Can be used combineLatest()
         this.store.select(rootReducer.MODELING_INIT)
             .subscribe(
                 (v: any[]) => {
-                    [this.SVGCOMPS, this.SVGATTRS, this.MWTITLE, this.TOOLTIPPOS, this.TOOLTIPD, this.spTgl, this.spStVal, this.inputs] = v;
+                    [this.SVG_COMPS, this.svg_attrs, this.MW_TITLE, this.TOOLTIP_POS, this.TOOLTIP_D, this.spn_tgl, this.spn_state_val, this.inputs] = v;
                 },
                 (e) => {this.ES.handleError(e)}
             );
@@ -102,16 +107,15 @@ export class ModelingComponent implements AfterViewInit{
     // Set event listener on the host.
     @HostListener('click', ['$event']) clickHandler(e: Event): void {
         const TARGET: any = e.target;
-        if(this.DOMS.compare(TARGET, this.SVGCOMPS)){
-            const SVG = this.DOMS.findHTMLElement(TARGET, 'svg');
+        if(this.DOMS.compare(TARGET, this.SVG_COMPS)){
+            const SVG = this.DOMS.findHTMLElement(TARGET, 'svg', this.renderer);
             if(SVG.getAttribute('data-D3-graph')){
                 const SVGClONE = SVG.cloneNode(true);
-                this.DOMS.attrSetter(SVGClONE, this.SVGATTRS);
-                this.DS.confirm(this.MWTITLE, SVGClONE)
+                this.DOMS.attrSetter(SVGClONE, this.svg_attrs, this.renderer);
+                this.DS.confirm(this.MW_TITLE, SVGClONE, this.dialog);
             }
         }
     };
-
     ngAfterViewInit(){
         const GV: HTMLElement = this.graphView.nativeElement;
         // Generate graph while rendering page.
@@ -167,9 +171,9 @@ export class ModelingComponent implements AfterViewInit{
             ),
             'Generations',
             'A1',
+            view,
             ['Eff. population size:', this.CS.harmonic1(NG), 'Generations: ', inputs[1].preDefData ],
-            inputs[1].preDefData,
-            view
+            inputs[1].preDefData
         );
     }
 }

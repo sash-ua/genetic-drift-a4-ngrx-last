@@ -18,7 +18,7 @@ export function reducer(state, action) {
     return DEV_REDUCER(state, action);
 }
 export var MODELING_STATE = function (state) { return state.modeling; };
-export var MODELING_INIT = createSelector(MODELING_STATE, fromModeling.GET_MODELING_CONST);
+export var MODELING_INIT = createSelector(MODELING_STATE, fromModeling.GET_MODELING_STATE);
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 
 //# sourceMappingURL=index.js.map

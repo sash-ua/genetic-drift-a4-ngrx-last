@@ -1,21 +1,22 @@
 
-import {ComponentFixture, inject, TestBed, async, TestComponentRenderer} from "@angular/core/testing";
+import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {TestHtmlComponents} from "../testing/test.stub.component/test-html.component";
-import {DebugElement, NO_ERRORS_SCHEMA, Renderer2} from "@angular/core";
+import {DebugElement, Renderer2} from "@angular/core";
 import {By} from "@angular/platform-browser";
 import {DOMService} from "./dom.service";
-import {FormsModule} from "@angular/forms";
 
-describe('DOMService',()=>{
+describe('DOMService: ',()=>{
     let arr1 = ['svg', 'g', 'tspan', 'text', 'path'];
     let arr2 = ['div', 'g', 'tspan', 'text', 'path'];
-    let el1: HTMLElement, el2: HTMLElement;
-    let fixture: ComponentFixture<TestHtmlComponents>;
+    let el1: DebugElement,
+        el2: DebugElement,
+        serv: DOMService,
+        r2: Renderer2,
+        fixture: ComponentFixture<TestHtmlComponents>,
+        comp: TestHtmlComponents;
     beforeEach(()=>{
         TestBed.configureTestingModule({
-            imports: [
-                FormsModule,
-            ],
+            imports: [],
             declarations: [
                 TestHtmlComponents
             ],
@@ -25,26 +26,30 @@ describe('DOMService',()=>{
             ]
         });
         fixture = TestBed.createComponent(TestHtmlComponents);
-        let comp: TestHtmlComponents = fixture.componentInstance;
-        let d1: DebugElement = fixture.debugElement.query(By.css('#dom-test'));
-        el1=d1.nativeElement;
-        let d2: DebugElement = fixture.debugElement.query(By.css('#dom-test-ul'));
-        el2= d2.nativeElement;
+        comp = fixture.componentInstance;
+        el1 = fixture.debugElement.query(By.css('#dom-test'));
+        el2 = fixture.debugElement.query(By.css('#dom-test-ul'));
+        serv = fixture.debugElement.injector.get(DOMService);
+        r2 = fixture.debugElement.injector.get(Renderer2);
+        fixture.detectChanges();
     });
-    it('DOMService - compare', (inject([DOMService],(serv: DOMService)=>{
-        expect(serv.compare(el1, arr1)).toBeFalsy();
-        expect(serv.compare(el1, arr2)).toBeTruthy();
-    })));
-    // it('DOMService - attrSetter', async(inject([DOMService], (serv: DOMService)=>{
-    //     fixture.detectChanges();
-    //     serv.attrSetter(el1, [['data-test', '1']]);
-    //     fixture.whenStable().then(()=>{
-    //         expect(el1.querySelector('#dom-test-ul').getAttribute('data-test')).toBeTruthy();
-    //     });
-    // })));
-    // it('DOMService - findHTMLElement', (inject([DOMService], (serv: DOMService)=>{
-    //     expect(serv.findHTMLElement(el2, 'div')).toEqual('');
-    // })))
+    it('compare - should compare is el-s tag one of tags array, return true-false', (()=>{
+        expect(serv.compare(el1.nativeElement, arr1)).toBeFalsy();
+        expect(serv.compare(el1.nativeElement, arr2)).toBeTruthy();
+    }));
+    it('attrSetter - set attribute than should return \'1\'', (()=>{
+        fixture.detectChanges();
+        serv.attrSetter(el1.nativeElement, [['data-test', '1']], r2);
+        expect(el1.nativeElement.getAttribute('data-test')).toMatch('1');
+    }));
+    it('findHTMLElement - should be truthy, if ther\'s at list one el-t with tag \'div\' among his ancestors' , (()=>{
+        fixture.detectChanges();
+        expect(serv.findHTMLElement(el2.nativeElement, 'div', r2)).toBeTruthy();
+    }));
+    it('findHTMLElement - should be null, if ther\'s not any el-t with tag \'svg\' among his ancestors' , (()=>{
+        fixture.detectChanges();
+        expect(serv.findHTMLElement(el2.nativeElement, 'svg', r2)).toBeNull();
+    }));
 });
 
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.

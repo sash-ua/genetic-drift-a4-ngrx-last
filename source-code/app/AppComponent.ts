@@ -8,7 +8,7 @@ import {replace} from "@ngrx/router-store";
     moduleId: module.id,
     selector: 'app-root',
     template:
-    `<div (swipe)="onSwipe($event)" class="wrapper">
+    `<div (swipe)="onSwipe($event, store)" class="wrapper">
         <header>
             <h1 class="header__title introduction__txt">Genetic drift</h1>
         </header>
@@ -35,11 +35,11 @@ export class AppComponent {
     constructor(
         private store: Store<fromRoot.State>
     ){}
-    onSwipe(e: Event){
+    onSwipe(e: HammerInput, store: Store<fromRoot.State>){
         if(e.offsetDirection === 4){
-            this.store.dispatch(replace(['/instruction'], {}));
+            store.dispatch(replace(['/instruction'], {}));
         } else if (e.offsetDirection === 2){
-            this.store.dispatch(replace(['/modeling'], {}));
+            store.dispatch(replace(['/modeling'], {}));
         }
     }
 }

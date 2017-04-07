@@ -3,7 +3,7 @@ import { FormControl, FormsModule, Validators } from "@angular/forms";
 import { TestHtmlComponents } from "../testing/test.stub.component/test-html.component";
 import { By } from "@angular/platform-browser";
 import { InputValidatorService } from "./inut.validator.service";
-describe('InputValidatorService', function () {
+describe('InputValidatorService: ', function () {
     var wr, r;
     beforeEach(function () {
         TestBed.configureTestingModule({
@@ -25,11 +25,11 @@ describe('InputValidatorService', function () {
         wr = deWr.nativeElement;
         r = deR.nativeElement;
     });
-    it('InputValidatorService - inputControl', (inject([InputValidatorService], function (service) {
+    it('inputControl', (inject([InputValidatorService], function (service) {
         expect(service.inputControl(wr.value, [1])).toBeNull();
         expect(service.inputControl(r.value, [0, 1])).toEqual(r.value);
     })));
-    it('InputValidatorService - inputConds', (inject([InputValidatorService], function (serv) {
+    it('inputConds', (inject([InputValidatorService], function (serv) {
         var z = new FormControl(wr.value, Validators.compose([
             Validators.required,
             Validators.pattern('([0-9]+)|([0-9]+\.[0-9]+)')

@@ -1,4 +1,4 @@
-## The simple web application [Modeling Genetic drift v.1.0.0-beta.3 (Angular 4 + Redux (NGRX)), demo]( https://sash-ua.github.io/genetic-drift-a4-ngrx-last/ ).
+## The simple web application [Modeling Genetic drift v.1.0.0 (Angular 4 + Redux (NGRX)), demo]( https://sash-ua.github.io/genetic-drift-a4-ngrx-last/ ).
  
 Angular 4 web-application visualizing Genetic drift in depend of the population's size, increasing or natural population decreasing and some probability processes.
 

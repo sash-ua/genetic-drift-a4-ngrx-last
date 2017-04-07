@@ -4,21 +4,21 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ComputationService {
     constructor() { }
-    // Array generator
-    arrG (func: Function, ...arg: Array<any>): Function{
-        return (iteration: number) => {
-            return new Array(iteration[0]).fill(0).map((v, i, arr) => func(arg, v, i, arr));
-        };
-    };
     // Return random number from min to max (ex. max).
     static rndmGen(min: number, max: number): number{
         return Math.floor(Math.random()* (max - min) + min);
     }
+    // Array generator
+    arrG (func: Function, ...arg: Array<any>): Function{
+        return (iteration: Array<number>): Array<any>  => {
+            return new Array(iteration[0]).fill(0).map((v, i, arr) => func(arg, v, i, arr));
+        };
+    };
     // Randomly generate true  / false (heads / tail).
     tossing1 (p: number): boolean{
         return (Math.random() <= p);
     };
-    // Calculation of results from function 'fn'. 'fn' return true / false,
+    // Calculation of results from function 'fn'. 'fn ' return true / false,
     // bounchCoin1 returns percentage of 'true' in 'edge' cases. Result (interval[0, 1]).
     bounchCoin1 ([fn, edge, p]: Array<any>): number {
         let h = 0,
@@ -40,7 +40,7 @@ export class ComputationService {
                 return acc + this.effPopSize1( val );
             }, 0 ));
     };
-    // BNF & MD interval[0, 1].
+    // growth, BNF & MD are from interval[0, 1].
     NRandom ([n0, growth, BNF, MD]: Array<number>): number {
         return Math.random() < BNF
             ? n0 + Math.floor(Math.random() * (1+ growth - MD) - (Math.random() * (n0 * (1 - (MD*2)))))
