@@ -3,9 +3,14 @@ import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import {AppModule} from "./app.module";
 import {enableDebugTools} from '@angular/platform-browser';
-// enableProdMode();
-// Compile and launch the module
-platformBrowserDynamic().bootstrapModule(AppModule);
-    // .then((appRef) => {
-    //     enableDebugTools(appRef);
-    // });
+import {environment} from "./environments/environment";
+
+if(environment.production){
+    enableProdMode();
+    platformBrowserDynamic().bootstrapModule(AppModule);
+} else {
+    platformBrowserDynamic().bootstrapModule(AppModule)
+        .then((appRef) => {
+            enableDebugTools(appRef);
+        });
+}

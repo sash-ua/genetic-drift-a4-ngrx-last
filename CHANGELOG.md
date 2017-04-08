@@ -1,3 +1,11 @@
+# 1.0.1 (2017-04-08)
+
+### CHANGES
+
+* Added production mode to store reducer.
+
+* Configured Protractor, added some e2e tests.
+
 # 1.0.0 (2017-04-07)
 
 ### CHANGES
@@ -6,9 +14,9 @@
 
 * **dom.service.ts:**
 
-* attrSetter() - add Renderer2 to args, can possible simple test methods with Renderer2 DI.
+    - attrSetter() - add Renderer2 to args, can possible simple test methods with Renderer2 DI.
 
-* findHTMLElement() - added null handle (if there aren't proper tags among ancestors), add Renderer2 to args.
+    - findHTMLElement() - added null handle (if there aren't proper tags among ancestors), add Renderer2 to args.
 
 * Added some unit-tests.
 

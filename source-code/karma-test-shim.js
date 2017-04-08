@@ -1,21 +1,18 @@
 // /*global jasmine, __karma__, window*/
-Error.stackTraceLimit = 0; // "No stacktrace"" is usually best for app testing.
 
-// Uncomment to get full stacktrace output. Sometimes helpful, usually not.
 // Error.stackTraceLimit = Infinity; //
-jasmine.DEFAULT_TIMEOUT_INTERVAL = 1000;
+// "No stacktrace"" is usually best for app testing.
+Error.stackTraceLimit = 0;
+
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 3000;
+
 var builtPath = '/base/app/';
 
 __karma__.loaded = function () {};
 
-
 function isJsFile(path) {
     return path.slice(-3) === '.js';
 }
-
-// function isSpecFile(path) {
-//     return /\.spec\.(.*\.)?js$/.test(path);
-// }
 
 function isBuiltFile(path) {
     return isJsFile(path) && (path.substr(0, builtPath.length) == builtPath);
@@ -23,11 +20,6 @@ function isBuiltFile(path) {
 function isSpecFile(path) {
     return path.slice(-8) === '.spec.js';
 }
-//
-// function isBuiltFile(path) {
-//     var builtPath = '/base/app/testing';
-//     return isJsFile(path) && (path.substr(0, builtPath.length) == builtPath);
-// }
 
 var allSpecFiles = Object.keys(window.__karma__.files)
     .filter(isSpecFile)
@@ -38,7 +30,7 @@ SystemJS.config({
     baseURL: '/base',
     // Extend usual application package list with test folder
     packages: { 'testing': { main: 'index', defaultExtension: 'js' } },
-    
+
     // Assume npm: is set in `paths` in systemjs.config
     // Map the angular testing umd bundles
     map: {
@@ -54,22 +46,8 @@ SystemJS.config({
     },
 });
 SystemJS.import('systemjs.config.js')
-// .then(importSystemJsExtras)
-    .then(initTestBed) //the order has matter
-    .then(initTesting)
-
-;
-
-/** Optional SystemJS configuration extras. Keep going w/o it */
-// function importSystemJsExtras(){
-//     return System.import('systemjs.config.extras.js')
-//         .catch(function(reason) {
-//             console.log(
-//                 'Warning: System.import could not load the optional "systemjs.config.extras.js". Did you omit it by accident? Continuing without it.'
-//             );
-//             console.log(reason);
-//         });
-// }
+    .then(initTestBed)
+    .then(initTesting);
 
 function initTestBed(){
     return Promise.all([
@@ -77,13 +55,12 @@ function initTestBed(){
         SystemJS.import('@angular/platform-browser-dynamic/testing')
     ])
         .then(function (providers) {
-        var coreTesting    = providers[0];
-        var browserTesting = providers[1];
-        
-        coreTesting.TestBed.initTestEnvironment(
-            browserTesting.BrowserDynamicTestingModule,
-            browserTesting.platformBrowserDynamicTesting());
-    })
+            var coreTesting    = providers[0];
+            var browserTesting = providers[1];
+            coreTesting.TestBed.initTestEnvironment(
+                browserTesting.BrowserDynamicTestingModule,
+                browserTesting.platformBrowserDynamicTesting());
+        })
 }
 
 // Import all spec files and start karma

@@ -1,19 +1,15 @@
 import {ComponentFixture, TestBed, async, inject} from "@angular/core/testing";
 import {AppComponent} from "./AppComponent";
 import {DebugElement} from "@angular/core";
-import {TestHtmlComponents} from "./testing/test.stub.component/test-html.component";
 import {By} from "@angular/platform-browser";
 import {RouterTestingModule} from "@angular/router/testing";
-import {provideStore, Store, StoreModule} from "@ngrx/store";
+import {Store, StoreModule} from "@ngrx/store";
 import "hammerjs";
-import * as fromRoot from './store.reducers/index';
-import {replace} from "@ngrx/router-store";
 import {reducer} from "./store.reducers/index";
 import {FormsModule} from "@angular/forms";
 import {createInjector} from "./testing/injectors";
 
 describe('AppComponent: ', ()=>{
-    // let t: string = 'DialogsService';
     let el: HTMLElement;
     let fixture: ComponentFixture<AppComponent>;
     let de: DebugElement;

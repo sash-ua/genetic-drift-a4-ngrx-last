@@ -8,7 +8,6 @@ import { reducer } from "./store.reducers/index";
 import { FormsModule } from "@angular/forms";
 import { createInjector } from "./testing/injectors";
 describe('AppComponent: ', function () {
-    // let t: string = 'DialogsService';
     var el;
     var fixture;
     var de;

@@ -16,10 +16,10 @@ import {replace} from "@ngrx/router-store";
             <nav>
                 <ul class="nav">
                     <li class="nav__el">
-                        <a routerLink="/instruction" routerLinkActive="active" [class.activeR]="active" class="nav_link link">Introduction</a>
+                        <a routerLink="/instruction" routerLinkActive="active" [class.activeR]="active" class="nav_link link" #intro>Introduction</a>
                     </li>
                     <li class="nav__el">
-                        <a routerLink="/modeling" routerLinkActive="active" [class.activeR]="active" class="nav_link link">Modeling</a>
+                        <a routerLink="/modeling" routerLinkActive="active" [class.activeR]="active" class="nav_link link" #mode>Modeling</a>
                     </li>
                 </ul>
             </nav>
