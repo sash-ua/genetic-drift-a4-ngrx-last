@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/sash-ua/genetic-drift-a4-ngrx-last.svg?branch=master)](https://travis-ci.org/sash-ua/genetic-drift-a4-ngrx-last)
+[![Dependency Status](https://david-dm.org/sash-ua/genetic-drift-a4-ngrx-last.svg)](https://david-dm.org/sash-ua/genetic-drift-a4-ngrx-last)
 
 ## The simple web application [Modeling Genetic drift v.1.0.2 (Angular 4 + Redux (NGRX)), demo]( https://sash-ua.github.io/genetic-drift-a4-ngrx-last/ ).
  
