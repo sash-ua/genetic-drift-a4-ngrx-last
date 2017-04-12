@@ -15,6 +15,9 @@ export const config: Config = {
     // directConnect: true,
     // seleniumAddress: 'http://0.0.0.0:4444/wd/hub',
     baseUrl: TEST_URL,
+    getPageTimeout: 10000,
+    ignoreUncaughtExceptions: true,
+    troubleshoot: true,
     framework: 'jasmine',
     chromeOnly: true,
     jasmineNodeOpts: {
@@ -22,7 +25,6 @@ export const config: Config = {
         defaultTimeoutInterval: 90000,
         isVerbose: false,
         includeStackTrace: false,
-        print: function() {}
     },
     // Compile and execute a ts script from e2e dir
     beforeLaunch: function() {
