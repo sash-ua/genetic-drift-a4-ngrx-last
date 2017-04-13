@@ -1,5 +1,6 @@
-[![Build Status](https://travis-ci.org/sash-ua/temp.svg?branch=master)](https://travis-ci.org/sash-ua/temp)
-[![Dependency Status](https://david-dm.org/sash-ua/temp.svg)](https://david-dm.org/sash-ua/temp)
+[![Build Status](https://travis-ci.org/sash-ua/genetic-drift-a4-ngrx-las.svg?branch=master)](https://travis-ci.org/sash-ua/genetic-drift-a4-ngrx-las)
+[![Dependency Status](https://david-dm.org/sash-ua/genetic-drift-a4-ngrx-las.svg)](https://david-dm.org/sash-ua/genetic-drift-a4-ngrx-las)
+[![devDependencies Status](https://david-dm.org/sash-ua/genetic-drift-a4-ngrx-las/dev-status.svg)](https://david-dm.org/sash-ua/genetic-drift-a4-ngrx-las?type=dev)
 
 ## The simple web application [Modeling Genetic drift v.1.0.3 (Angular 4 + Redux (NGRX)), demo]( https://sash-ua.github.io/genetic-drift-a4-ngrx-last/ ).
  
