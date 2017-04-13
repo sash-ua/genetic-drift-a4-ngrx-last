@@ -141,4 +141,3 @@ D3Service = __decorate([
 exports.D3Service = D3Service;
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 
-//# sourceMappingURL=d3.service.js.map

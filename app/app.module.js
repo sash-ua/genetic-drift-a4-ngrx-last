@@ -11,8 +11,6 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var animations_1 = require("@angular/platform-browser/animations");
-// UI
-var material_1 = require("@angular/material");
 // Modules
 var core_module_1 = require("./core/core.module");
 var shared_module_1 = require("./shared/shared.module");
@@ -38,7 +36,6 @@ AppModule = __decorate([
             shared_module_1.SharedModule,
             core_module_1.CoreModule,
             animations_1.BrowserAnimationsModule,
-            material_1.MaterialModule,
             store_1.StoreModule.provideStore(index_1.reducer),
             router_store_1.RouterStoreModule.connectRouter(),
             store_devtools_1.StoreDevtoolsModule.instrumentOnlyWithExtension({ maxAge: 25 })
@@ -57,4 +54,3 @@ AppModule = __decorate([
     })
 ], AppModule);
 exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map

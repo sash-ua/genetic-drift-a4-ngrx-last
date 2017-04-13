@@ -130,7 +130,7 @@ ModelingComponent = __decorate([
             specific_service_1.SpecificService,
             dialogs_service_1.DialogsService,
             dom_service_1.DOMService,
-            d3_service_1.D3Service
+            d3_service_1.D3Service,
         ]
     }),
     __metadata("design:paramtypes", [d3_service_1.D3Service,
@@ -146,4 +146,3 @@ ModelingComponent = __decorate([
 exports.ModelingComponent = ModelingComponent;
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 
-//# sourceMappingURL=modeling.component.js.map

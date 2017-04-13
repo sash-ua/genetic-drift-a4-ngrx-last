@@ -62,4 +62,3 @@ describe('Specific service: ', function () {
 });
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 
-//# sourceMappingURL=specific.service.spec.js.map

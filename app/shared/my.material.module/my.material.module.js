@@ -16,15 +16,21 @@ var MyMaterialModule = (function () {
 MyMaterialModule = __decorate([
     core_1.NgModule({
         imports: [
+            material_1.MdTooltipModule,
+            material_1.MdDialogModule,
             material_1.MdInputModule,
             material_1.MdProgressSpinnerModule,
             material_1.MdButtonModule
         ],
         exports: [
             material_1.MdProgressSpinner,
+            material_1.MdProgressSpinnerCssMatStyler,
             material_1.MdInputContainer,
             material_1.MdInputDirective,
             material_1.MdButton,
+            material_1.MdRaisedButtonCssMatStyler,
+            material_1.MdButtonCssMatStyler,
+            material_1.MdTooltip
         ],
         declarations: [],
         providers: [],
@@ -33,4 +39,3 @@ MyMaterialModule = __decorate([
 exports.MyMaterialModule = MyMaterialModule;
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 
-//# sourceMappingURL=my.material.module.js.map

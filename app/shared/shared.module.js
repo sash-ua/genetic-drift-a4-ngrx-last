@@ -10,11 +10,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var common_1 = require("@angular/common");
-var material_1 = require("@angular/material");
 var input_component_1 = require("./inputs.component/input.component");
 var spinner_component_1 = require("./progress.spinner/spinner.component");
 var stub_component_1 = require("./stub.component/stub.component");
 var modal_window_component_1 = require("./modal_window.component/modal_window.component");
+var my_material_module_1 = require("./my.material.module/my.material.module");
 var SharedModule = (function () {
     function SharedModule() {
     }
@@ -25,8 +25,7 @@ SharedModule = __decorate([
         imports: [
             common_1.CommonModule,
             forms_1.FormsModule,
-            material_1.MdDialogModule,
-            material_1.MaterialModule
+            my_material_module_1.MyMaterialModule,
         ],
         declarations: [
             input_component_1.InputComponent,
@@ -46,4 +45,3 @@ SharedModule = __decorate([
 exports.SharedModule = SharedModule;
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 
-//# sourceMappingURL=shared.module.js.map

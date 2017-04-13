@@ -29,4 +29,3 @@ DialogsService = __decorate([
 exports.DialogsService = DialogsService;
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 
-//# sourceMappingURL=dialogs.service.js.map

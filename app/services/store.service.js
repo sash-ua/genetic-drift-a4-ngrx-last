@@ -28,4 +28,3 @@ StoreService = __decorate([
 exports.StoreService = StoreService;
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 
-//# sourceMappingURL=store.service.js.map

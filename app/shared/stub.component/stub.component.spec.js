@@ -30,4 +30,3 @@ describe('StubComponent: ', function () {
 });
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 
-//# sourceMappingURL=stub.component.spec.js.map

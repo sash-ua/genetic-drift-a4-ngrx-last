@@ -88,4 +88,3 @@ exports.GET_MODELING_STATE = reselect_1.createSelector(exports.GET_SVG_COMPS, ex
 });
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 
-//# sourceMappingURL=modeling.reducer.js.map

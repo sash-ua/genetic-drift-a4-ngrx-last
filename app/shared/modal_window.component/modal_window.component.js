@@ -22,11 +22,10 @@ ModalWindowComponent = __decorate([
         changeDetection: core_1.ChangeDetectionStrategy.OnPush,
         selector: "for-test",
         template: "\n        <button md-button class=\"modal-wndw__btn\"\n                (click)=\"dialogRef.close()\">X</button>\n        <h2 md-dialog-title>{{ title }}</h2>\n        <stub-cmpnt [stub-cmpnt-body]=\"element\"></stub-cmpnt>",
-        styles: ["\n        h2{\n            text-align: center;\n            text-transform: uppercase;\n            margin: 0 0 0 40px;\n            padding: 0;\n        }\n        .modal-wndw__btn{\n            min-width: 40px;\n            padding: 0;\n            float: right;\n        }\n    "]
+        styles: ["\n        h2{\n            text-align: center;\n            text-transform: uppercase;\n            margin: 0 0 0 40px;\n            padding: 0;\n        }\n        .modal-wndw__btn{\n            position: relative;\n            min-width: 40px;\n            padding: 0;\n            float: right;\n        }\n    "]
     }),
     __metadata("design:paramtypes", [material_1.MdDialogRef])
 ], ModalWindowComponent);
 exports.ModalWindowComponent = ModalWindowComponent;
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 
-//# sourceMappingURL=modal_window.component.js.map

@@ -9,8 +9,8 @@ import {AppRoutingModule} from "./app-routing.module";
 import {SharedModule} from "../shared/shared.module";
 import {D3Service} from "../services/d3.service";
 import {DialogsService} from "../services/dialogs.service";
-import {MaterialModule} from "@angular/material";
 import {ModalWindowComponent} from "../shared/modal_window.component/modal_window.component";
+import {MyMaterialModule} from "../shared/my.material.module/my.material.module";
 
 @NgModule({
     imports: [
@@ -18,7 +18,7 @@ import {ModalWindowComponent} from "../shared/modal_window.component/modal_windo
         FormsModule,
         AppRoutingModule,
         SharedModule,
-        MaterialModule
+        MyMaterialModule,
     ],
     declarations: [
         Page404Component,

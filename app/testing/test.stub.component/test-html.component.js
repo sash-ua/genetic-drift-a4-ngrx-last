@@ -71,4 +71,3 @@ TestModule = __decorate([
 exports.TestModule = TestModule;
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 
-//# sourceMappingURL=test-html.component.js.map

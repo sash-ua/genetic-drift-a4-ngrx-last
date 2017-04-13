@@ -62,4 +62,3 @@ describe('ModelingComponent: ', function () {
 });
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 
-//# sourceMappingURL=modeling.component.spec.js.map

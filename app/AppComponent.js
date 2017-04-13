@@ -40,4 +40,3 @@ AppComponent = __decorate([
 exports.AppComponent = AppComponent;
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 
-//# sourceMappingURL=AppComponent.js.map

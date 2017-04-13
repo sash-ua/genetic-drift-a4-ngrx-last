@@ -21,7 +21,6 @@ import {
     SpnStage3, GetInputs
 } from "../../store.actions/modeling.action";
 import {MdDialog} from "@angular/material";
-import {ModalWindowComponent} from "../../shared/modal_window.component/modal_window.component";
 
 @Component({
     moduleId: module.id,
@@ -65,7 +64,7 @@ import {ModalWindowComponent} from "../../shared/modal_window.component/modal_wi
         SpecificService,
         DialogsService,
         DOMService,
-        D3Service
+        D3Service,
     ]
 })
 export class ModelingComponent implements AfterViewInit{

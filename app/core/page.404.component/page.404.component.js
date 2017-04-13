@@ -23,4 +23,3 @@ Page404Component = __decorate([
 exports.Page404Component = Page404Component;
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 
-//# sourceMappingURL=page.404.component.js.map

@@ -26,4 +26,3 @@ exports.MODELING_STATE = function (state) { return state.modeling; };
 exports.MODELING_INIT = reselect_1.createSelector(exports.MODELING_STATE, fromModeling.GET_MODELING_STATE);
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 
-//# sourceMappingURL=index.js.map

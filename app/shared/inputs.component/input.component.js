@@ -28,7 +28,7 @@ InputComponent = __decorate([
         template: "<md-input-container\n                [dividerColor]=\"input.dvdrColor\"\n                class=\"my-input\">\n            <input mdInput\n                [value]=\"input.preDefData\"\n                [placeholder]=\"input.hint\"\n                (input)=\"id.value = validation.inputControl(id.value, input.interval)\" \n                #id>\n        </md-input-container>",
         styles: ['.my-input { margin: 10px 10px}'],
         providers: [
-            inut_validator_service_1.InputValidatorService
+            inut_validator_service_1.InputValidatorService,
         ]
     }),
     __metadata("design:paramtypes", [inut_validator_service_1.InputValidatorService])
@@ -36,4 +36,3 @@ InputComponent = __decorate([
 exports.InputComponent = InputComponent;
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 
-//# sourceMappingURL=input.component.js.map

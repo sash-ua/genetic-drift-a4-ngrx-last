@@ -5,7 +5,7 @@ import {FormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 // UI
-import {MaterialModule} from "@angular/material";
+import {MyMaterialModule} from "./shared/my.material.module/my.material.module";
 // Modules
 import {CoreModule} from "./core/core.module";
 import {SharedModule} from "./shared/shared.module";
@@ -27,7 +27,6 @@ import {StoreDevtoolsModule} from "@ngrx/store-devtools";
         SharedModule,
         CoreModule,
         BrowserAnimationsModule,
-        MaterialModule,
         StoreModule.provideStore(reducer),
         RouterStoreModule.connectRouter(),
         StoreDevtoolsModule.instrumentOnlyWithExtension({maxAge: 25})

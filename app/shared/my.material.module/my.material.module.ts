@@ -1,27 +1,31 @@
 
 import { NgModule } from '@angular/core';
 import {
-    MdProgressSpinner, MdInputContainer, MdSpinner, MdInputModule, MdProgressSpinnerModule,
-    MdInputDirective, MdButtonModule, MdButton, MdAnchor
+    MdProgressSpinner, MdInputContainer, MdInputModule, MdProgressSpinnerModule,
+    MdInputDirective, MdButtonModule, MdButton, MdDialogModule, MdTooltipModule, MdTooltip,
+    MdRaisedButtonCssMatStyler, MdButtonCssMatStyler, MdProgressSpinnerCssMatStyler
 } from "@angular/material";
 
 
 @NgModule({
     imports: [
+        MdTooltipModule,
+        MdDialogModule,
         MdInputModule,
         MdProgressSpinnerModule,
         MdButtonModule
     ],
     exports: [
         MdProgressSpinner,
+        MdProgressSpinnerCssMatStyler,
         MdInputContainer,
         MdInputDirective,
         MdButton,
+        MdRaisedButtonCssMatStyler,
+        MdButtonCssMatStyler,
+        MdTooltip
     ],
-    declarations: [
-        // MdProgressSpinner,
-        // MdInputContainer
-    ],
+    declarations: [],
     providers: [],
 })
 export class MyMaterialModule { }

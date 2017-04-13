@@ -1,5 +1,6 @@
 import {Component, Input, ChangeDetectionStrategy} from "@angular/core";
 import {InputValidatorService} from "../../services/inut.validator.service";
+import {MdTooltip} from "@angular/material";
 
 @Component({
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -16,7 +17,7 @@ import {InputValidatorService} from "../../services/inut.validator.service";
         </md-input-container>`,
     styles:['.my-input { margin: 10px 10px}'],
     providers:[
-        InputValidatorService
+        InputValidatorService,
     ]
 })
 export  class  InputComponent {

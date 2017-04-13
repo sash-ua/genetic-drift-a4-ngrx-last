@@ -41,4 +41,3 @@ InstructionComponent = __decorate([
 exports.InstructionComponent = InstructionComponent;
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 
-//# sourceMappingURL=instruction.component.js.map

@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var testing_1 = require("@angular/core/testing");
 var spinner_component_1 = require("./spinner.component");
 var material_1 = require("@angular/material");
+var platform_browser_1 = require("@angular/platform-browser");
 describe('SpinnerComponent: ', function () {
     var fixture, comp, de, el;
     beforeEach(testing_1.async(function () {
@@ -25,7 +26,10 @@ describe('SpinnerComponent: ', function () {
     it('should create component', function () {
         expect(comp).toBeDefined();
     });
+    it('should define a default value of undefined for the value attribute', function () {
+        var progressElement = fixture.debugElement.query(platform_browser_1.By.css('md-progress-spinner'));
+        expect(progressElement.componentInstance.value).toEqual(50);
+    });
 });
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 
-//# sourceMappingURL=spinner.component.spec.js.map

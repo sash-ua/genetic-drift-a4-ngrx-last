@@ -8,8 +8,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t;
-    return { next: verb(0), "throw": verb(1), "return": verb(2) };
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
@@ -37,6 +37,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var protractor_1 = require("protractor");
 var Observable_1 = require("rxjs/Observable");
+require("rxjs/add/operator/debounceTime");
+var protractor_conf_1 = require("../protractor.conf");
 exports.swipeTest = function (st, end) {
     return Observable_1.Observable.create(function (o) {
         o.next(protractor_1.browser.touchActions()
@@ -46,9 +48,12 @@ exports.swipeTest = function (st, end) {
             .perform());
     });
 };
+exports.path = function () {
+    return protractor_1.browser.getCurrentUrl();
+};
 describe('E2E, genetic drift: ', function () {
     var _this = this;
-    var stSwipePoint = { x: 200, y: 200 };
+    var stSwipePoint = { x: 100, y: 100 };
     beforeEach(function () { return __awaiter(_this, void 0, void 0, function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
@@ -58,7 +63,7 @@ describe('E2E, genetic drift: ', function () {
         });
     }); });
     it('1 should get a current URL after rendered', function () {
-        expect(protractor_1.browser.getCurrentUrl()).toEqual('http://localhost:3000/#/instruction');
+        expect(protractor_1.browser.getCurrentUrl()).toEqual(protractor_conf_1.TEST_URL + "#/instruction");
     });
     it('2 should get a title', function () {
         expect(protractor_1.browser.getTitle()).toEqual('Genetic Drift');
@@ -68,44 +73,46 @@ describe('E2E, genetic drift: ', function () {
         expect(protractor_1.element.all(protractor_1.by.css('h2')).first().getText()).toEqual('Introduction');
     });
     it('4 should check proper h1, h2 txt content while on Visualization page', function () {
-        protractor_1.browser.get('#/modeling');
+        protractor_1.browser.get(protractor_conf_1.TEST_URL + "#/modeling");
         expect(protractor_1.element.all(protractor_1.by.css('h1')).first().getText()).toEqual('Genetic drift');
         expect(protractor_1.element.all(protractor_1.by.css('h2')).first().getText()).toEqual('Visualization');
     });
-    it('5 should release swipe from right to left, start on Introduction page', function () {
-        exports.swipeTest(stSwipePoint, { x: 100, y: 200 }).subscribe(function (r) {
-            expect(protractor_1.browser.getCurrentUrl()).toEqual('http://localhost:3000/#/modeling');
-        });
-    });
-    it('6 should release swipe from left to right, start on Visualization page', function () {
-        protractor_1.browser.get('#/modeling', 1000);
-        exports.swipeTest(stSwipePoint, { x: 300, y: 200 }).subscribe(function () {
-            expect(protractor_1.browser.getCurrentUrl()).toEqual('http://localhost:3000/#/instruction');
-        });
-    });
-    it('7 should release swipe from top to bottom, start on Visualization page, nothing happen', function () {
-        protractor_1.browser.get('#/modeling');
+    it('5 should release swipe from left to right, start on Visualization page', function () {
+        protractor_1.browser.get(protractor_conf_1.TEST_URL + "#/modeling");
         exports.swipeTest(stSwipePoint, { x: 200, y: 100 }).subscribe(function () {
-            expect(protractor_1.browser.getCurrentUrl()).toEqual('http://localhost:3000/#/modeling');
+            expect(protractor_1.browser.getCurrentUrl()).toEqual(protractor_conf_1.TEST_URL + "#/instruction");
         });
     });
+    it('6 should release swipe from right to left, start on Introduction page', function () {
+        exports.swipeTest(stSwipePoint, { x: 0, y: 100 }).subscribe(function (r) {
+            expect(protractor_1.browser.getCurrentUrl()).toEqual(protractor_conf_1.TEST_URL + "#/modeling");
+        });
+    });
+    it('7 should release swipe from top to bottom, start on Visualization page, nothing happen', function () { return __awaiter(_this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            protractor_1.browser.get(protractor_conf_1.TEST_URL + "#/modeling");
+            exports.swipeTest(stSwipePoint, { x: 100, y: 0 }).subscribe(function () {
+                expect(protractor_1.browser.getCurrentUrl()).toEqual(protractor_conf_1.TEST_URL + "#/modeling");
+            });
+            return [2 /*return*/];
+        });
+    }); });
     it('8 should release swipe from bottom to top, start on Visualization page, nothing happen', function () {
-        protractor_1.browser.get('#/modeling');
-        exports.swipeTest(stSwipePoint, { x: 200, y: 300 }).subscribe(function () {
-            expect(protractor_1.browser.getCurrentUrl()).toEqual('http://localhost:3000/#/modeling');
+        protractor_1.browser.get(protractor_conf_1.TEST_URL + "#/modeling");
+        exports.swipeTest(stSwipePoint, { x: 100, y: 200 }).subscribe(function () {
+            expect(protractor_1.browser.getCurrentUrl()).toEqual(protractor_conf_1.TEST_URL + "#/modeling");
         });
     });
     it('9 should release swipe from top to bottom, start on Introduction page, nothing happen', function () {
-        exports.swipeTest(stSwipePoint, { x: 200, y: 100 }).subscribe(function () {
-            expect(protractor_1.browser.getCurrentUrl()).toEqual('http://localhost:3000/#/instruction');
+        exports.swipeTest(stSwipePoint, { x: 100, y: 0 }).subscribe(function () {
+            expect(protractor_1.browser.getCurrentUrl()).toEqual(protractor_conf_1.TEST_URL + "#/instruction");
         });
     });
     it('10 should release swipe from bottom to top, start on Introduction page, nothing happen', function () {
-        exports.swipeTest(stSwipePoint, { x: 200, y: 300 }).subscribe(function () {
-            expect(protractor_1.browser.getCurrentUrl()).toEqual('http://localhost:3000/#/instruction');
+        exports.swipeTest(stSwipePoint, { x: 100, y: 200 }).subscribe(function () {
+            expect(protractor_1.browser.getCurrentUrl()).toEqual(protractor_conf_1.TEST_URL + "#/instruction");
         });
     });
 });
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 
-//# sourceMappingURL=app.e2e.spec.js.map

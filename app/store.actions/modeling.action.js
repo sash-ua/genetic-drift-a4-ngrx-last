@@ -54,4 +54,3 @@ var SpnStage3 = (function () {
 exports.SpnStage3 = SpnStage3;
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 
-//# sourceMappingURL=modeling.action.js.map

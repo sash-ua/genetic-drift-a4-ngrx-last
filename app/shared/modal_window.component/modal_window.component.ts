@@ -17,6 +17,7 @@ import {MdDialogRef} from "@angular/material";
             padding: 0;
         }
         .modal-wndw__btn{
+            position: relative;
             min-width: 40px;
             padding: 0;
             float: right;

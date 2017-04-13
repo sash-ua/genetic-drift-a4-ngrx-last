@@ -16,8 +16,8 @@ var app_routing_module_1 = require("./app-routing.module");
 var shared_module_1 = require("../shared/shared.module");
 var d3_service_1 = require("../services/d3.service");
 var dialogs_service_1 = require("../services/dialogs.service");
-var material_1 = require("@angular/material");
 var modal_window_component_1 = require("../shared/modal_window.component/modal_window.component");
+var my_material_module_1 = require("../shared/my.material.module/my.material.module");
 var CoreModule = (function () {
     function CoreModule() {
     }
@@ -30,7 +30,7 @@ CoreModule = __decorate([
             forms_1.FormsModule,
             app_routing_module_1.AppRoutingModule,
             shared_module_1.SharedModule,
-            material_1.MaterialModule
+            my_material_module_1.MyMaterialModule,
         ],
         declarations: [
             page_404_component_1.Page404Component,
@@ -56,4 +56,3 @@ CoreModule = __decorate([
 exports.CoreModule = CoreModule;
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 
-//# sourceMappingURL=core.module.js.map

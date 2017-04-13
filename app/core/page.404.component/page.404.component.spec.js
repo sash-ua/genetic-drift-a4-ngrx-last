@@ -20,4 +20,3 @@ describe('Page404Component: ', function () {
 });
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 
-//# sourceMappingURL=page.404.component.spec.js.map

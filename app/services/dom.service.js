@@ -45,4 +45,3 @@ DOMService = __decorate([
 exports.DOMService = DOMService;
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 
-//# sourceMappingURL=dom.service.js.map

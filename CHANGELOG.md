@@ -1,3 +1,9 @@
+# 1.0.3 (2017-04-13)
+
+### CHANGES
+
+* Migrate to Angular 4.1.0-beta.1, Angular Material 2.0.0-beta.3
+
 # 1.0.2 (2017-04-11)
 
 ### CHANGES

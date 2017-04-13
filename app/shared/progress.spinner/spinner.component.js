@@ -37,4 +37,3 @@ SpinnerComponent = __decorate([
 exports.SpinnerComponent = SpinnerComponent;
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 
-//# sourceMappingURL=spinner.component.js.map

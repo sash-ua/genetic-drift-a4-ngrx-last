@@ -16,4 +16,3 @@ describe('Store services: ', function () {
 });
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 
-//# sourceMappingURL=store.service.spec.js.map

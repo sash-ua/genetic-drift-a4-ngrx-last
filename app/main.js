@@ -16,4 +16,3 @@ else {
         platform_browser_1.enableDebugTools(appRef);
     });
 }
-//# sourceMappingURL=main.js.map

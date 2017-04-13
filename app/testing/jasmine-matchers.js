@@ -1,5 +1,5 @@
-/// <reference path="./jasmine-matchers.d.ts" />
 "use strict";
+/// <reference path="./jasmine-matchers.d.ts" />
 Object.defineProperty(exports, "__esModule", { value: true });
 ////  Jasmine Custom Matchers ////
 // Be sure to extend jasmine-matchers.d.ts when adding matchers
@@ -44,4 +44,3 @@ function elementText(n) {
  Use of this source code is governed by an MIT-style license that
  can be found in the LICENSE file at http://angular.io/license
  */ 
-//# sourceMappingURL=jasmine-matchers.js.map

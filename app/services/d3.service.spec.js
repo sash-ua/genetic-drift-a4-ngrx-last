@@ -41,4 +41,3 @@ describe('D3Service: ', function () {
 });
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 
-//# sourceMappingURL=d3.service.spec.js.map

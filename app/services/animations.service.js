@@ -49,4 +49,3 @@ AnimationsServices = __decorate([
 exports.AnimationsServices = AnimationsServices;
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License.
-//# sourceMappingURL=animations.service.js.map

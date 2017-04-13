@@ -16,4 +16,3 @@ describe('error.handler.service: ', function () {
 });
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 
-//# sourceMappingURL=error.handler.service.spec.js.map
