@@ -11,7 +11,7 @@ export class ComputationService {
     // Array generator
     arrG (func: Function, ...arg: Array<any>): Function{
         return (iteration: Array<number>): Array<any>  => {
-            return new Array(iteration[0]).fill(0).map((v, i, arr) => func(arg, v, i, arr));
+            return new Array(iteration[0]).fill(0).map((v: any, i: number, arr: Array<number>) => func(arg, v, i, arr));
         };
     };
     // Randomly generate true  / false (heads / tail).

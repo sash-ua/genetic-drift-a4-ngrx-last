@@ -1,5 +1,5 @@
 import {
-    Component, HostListener, HostBinding, ViewChild, ElementRef, AfterViewInit, OnInit, Renderer2
+    Component, HostListener, HostBinding, ViewChild, ElementRef, AfterViewInit, OnInit, Renderer2, OnDestroy
 } from "@angular/core";
 import {Observable} from "rxjs/Observable";
 import 'rxjs/add/operator/do';
@@ -21,6 +21,7 @@ import {
     SpnStage3, GetInputs
 } from "../../store.actions/modeling.action";
 import {MdDialog} from "@angular/material";
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
     moduleId: module.id,
@@ -67,8 +68,10 @@ import {MdDialog} from "@angular/material";
         D3Service,
     ]
 })
-export class ModelingComponent implements AfterViewInit{
+export class ModelingComponent implements AfterViewInit, OnDestroy{
     MW_TITLE: string ;
+    subsToStore: Subscription;
+    subsToEvent: Subscription;
     svg_attrs: ArrAttrSetter;
     SVG_COMPS: Array<string>;
     TOOLTIP_D: number;
@@ -89,7 +92,7 @@ export class ModelingComponent implements AfterViewInit{
         protected dialog: MdDialog
     ){
 // Can be used combineLatest()
-        this.store.select(rootReducer.MODELING_INIT)
+        this.subsToStore = this.store.select(rootReducer.MODELING_INIT)
             .subscribe(
                 (v: any[]) => {
                     [this.SVG_COMPS, this.svg_attrs, this.MW_TITLE, this.TOOLTIP_POS, this.TOOLTIP_D, this.spn_tgl, this.spn_state_val, this.inputs] = v;
@@ -120,7 +123,7 @@ export class ModelingComponent implements AfterViewInit{
         // Generate graph while rendering page.
         this.render(this.inputs, GV);
         // Button 'Lunch' handler. Produce D3 Graph after clicking and manage spinner.
-        Observable.fromEvent(this.launch.nativeElement, 'click')
+        this.subsToEvent = Observable.fromEvent(this.launch.nativeElement, 'click')
             .let((obs: Observable<{}>) =>
                 obs.do(()=>{this.store.dispatch(new SpnStage0);})
                     .debounceTime(4)
@@ -142,6 +145,10 @@ export class ModelingComponent implements AfterViewInit{
                 () => {},
                 (e: Error) => {this.ES.handleError(e);}
             );
+    }
+    ngOnDestroy(){
+        this.subsToStore.unsubscribe();
+        this.subsToEvent.unsubscribe();
     }
 
     // Render array type of Inputs with D3

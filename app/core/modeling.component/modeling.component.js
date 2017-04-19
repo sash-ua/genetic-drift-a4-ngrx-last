@@ -40,7 +40,7 @@ var ModelingComponent = (function () {
         this.routeAnimationRight = true;
         this.position = 'absolute';
         // Can be used combineLatest()
-        this.store.select(rootReducer.MODELING_INIT)
+        this.subsToStore = this.store.select(rootReducer.MODELING_INIT)
             .subscribe(function (v) {
             _this.SVG_COMPS = v[0], _this.svg_attrs = v[1], _this.MW_TITLE = v[2], _this.TOOLTIP_POS = v[3], _this.TOOLTIP_D = v[4], _this.spn_tgl = v[5], _this.spn_state_val = v[6], _this.inputs = v[7];
         }, function (e) { _this.ES.handleError(e); });
@@ -64,7 +64,7 @@ var ModelingComponent = (function () {
         // Generate graph while rendering page.
         this.render(this.inputs, GV);
         // Button 'Lunch' handler. Produce D3 Graph after clicking and manage spinner.
-        Observable_1.Observable.fromEvent(this.launch.nativeElement, 'click')
+        this.subsToEvent = Observable_1.Observable.fromEvent(this.launch.nativeElement, 'click')
             .let(function (obs) {
             return obs.do(function () { _this.store.dispatch(new modeling_action_1.SpnStage0); })
                 .debounceTime(4)
@@ -83,6 +83,10 @@ var ModelingComponent = (function () {
                 .do(function () { _this.store.dispatch(new modeling_action_1.EndSpinnerAnim); });
         })
             .subscribe(function () { }, function (e) { _this.ES.handleError(e); });
+    };
+    ModelingComponent.prototype.ngOnDestroy = function () {
+        this.subsToStore.unsubscribe();
+        this.subsToEvent.unsubscribe();
     };
     // Render array type of Inputs with D3
     ModelingComponent.prototype.render = function (inputs, view) {

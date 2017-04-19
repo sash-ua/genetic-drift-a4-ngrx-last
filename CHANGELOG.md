@@ -1,3 +1,9 @@
+# 1.0.4 (2017-04-19)
+
+### CHANGES
+
+* Added unsubscription for observables when component destroyed.
+
 # 1.0.3 (2017-04-13)
 
 ### CHANGES
