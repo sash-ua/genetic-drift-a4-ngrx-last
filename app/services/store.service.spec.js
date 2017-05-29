@@ -1,14 +1,16 @@
-import { StoreService } from "./store.service";
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var store_service_1 = require("./store.service");
 describe('Store services: ', function () {
-    StoreService.typeCache = { label1: 'text' };
+    store_service_1.StoreService.typeCache = { label1: 'text' };
     it('type -> type', function () {
-        var z = StoreService.type('test');
+        var z = store_service_1.StoreService.type('test');
         expect(z).toBe('test');
     });
     it('type -> error', function () {
         var l = 'label1';
         expect(function () {
-            StoreService.type(l);
+            store_service_1.StoreService.type(l);
         }).toThrowError("Action type \"" + l + "\" is not unique");
     });
 });

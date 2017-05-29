@@ -1,12 +1,14 @@
+"use strict";
 /// <reference path="./jasmine-matchers.d.ts" />
+Object.defineProperty(exports, "__esModule", { value: true });
 ////  Jasmine Custom Matchers ////
 // Be sure to extend jasmine-matchers.d.ts when adding matchers
-/// <reference path="./jasmine-matchers.d.ts" />
-export default function addMatchers() {
+function addMatchers() {
     jasmine.addMatchers({
         toHaveText: toHaveText
     });
 }
+exports.default = addMatchers;
 function toHaveText() {
     return {
         compare: function (actual, expectedText, expectationFailOutput) {

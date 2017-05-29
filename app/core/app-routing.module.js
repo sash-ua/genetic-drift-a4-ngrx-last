@@ -1,19 +1,21 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { InstructionComponent } from "./inctruction.component/instruction.component";
-import { ModelingComponent } from "./modeling.component/modeling.component";
-import { Page404Component } from "./page.404.component/page.404.component";
-export var ROUTES = [
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var instruction_component_1 = require("./inctruction.component/instruction.component");
+var modeling_component_1 = require("./modeling.component/modeling.component");
+var page_404_component_1 = require("./page.404.component/page.404.component");
+exports.ROUTES = [
     { path: '', redirectTo: 'instruction', pathMatch: 'full' },
-    { path: 'instruction', component: InstructionComponent },
-    { path: 'modeling', component: ModelingComponent },
-    { path: '**', component: Page404Component }
+    { path: 'instruction', component: instruction_component_1.InstructionComponent },
+    { path: 'modeling', component: modeling_component_1.ModelingComponent },
+    { path: '**', component: page_404_component_1.Page404Component }
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {
@@ -21,13 +23,13 @@ var AppRoutingModule = (function () {
     return AppRoutingModule;
 }());
 AppRoutingModule = __decorate([
-    NgModule({
+    core_1.NgModule({
         imports: [
-            RouterModule.forRoot(ROUTES, { useHash: true })
+            router_1.RouterModule.forRoot(exports.ROUTES, { useHash: true })
         ],
         exports: [
-            RouterModule
+            router_1.RouterModule
         ]
     })
 ], AppRoutingModule);
-export { AppRoutingModule };
+exports.AppRoutingModule = AppRoutingModule;

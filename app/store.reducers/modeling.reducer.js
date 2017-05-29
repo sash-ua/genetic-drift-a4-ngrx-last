@@ -1,3 +1,4 @@
+"use strict";
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
         s = arguments[i];
@@ -6,17 +7,18 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     }
     return t;
 };
-import * as modeling from "../store.actions/modeling.action";
-import { ComputationService } from "../services/computation.service";
-import { createSelector } from 'reselect';
-import { SpecificService } from "../services/specific.service";
+Object.defineProperty(exports, "__esModule", { value: true });
+var modeling = require("../store.actions/modeling.action");
+var computation_service_1 = require("../services/computation.service");
+var reselect_1 = require("reselect");
+var specific_service_1 = require("../services/specific.service");
 var MODELING_CONSTS = {
     TOOLTIP_D: 100,
     TOOLTIP_POS: 'above',
     MW_TITLE: "Graph",
     SVG_COMPS: ['svg', 'g', 'tspan', 'text', 'path']
 };
-export var INIT_STATE = __assign({ spn_tgl: 'out', spn_state_val: 0, inputs: [
+exports.INIT_STATE = __assign({ spn_tgl: 'out', spn_state_val: 0, inputs: [
         { preDefData: 1000, hint: 'Population', dvdrColor: 'warn', interval: [2], toolTip: 'Integer number from 2' },
         { preDefData: 100, hint: 'Generations', dvdrColor: 'warn', interval: [1], toolTip: 'Integer number from 1' },
         { preDefData: 2, hint: 'Simulations', dvdrColor: 'warn', interval: [1], toolTip: 'Integer number from 1' },
@@ -24,59 +26,60 @@ export var INIT_STATE = __assign({ spn_tgl: 'out', spn_state_val: 0, inputs: [
         { preDefData: 0.1, hint: 'Bottle Neck Probability', dvdrColor: 'primary', interval: [0, 1], toolTip: 'Value from 0 to 1, for ex. 0.2' },
         { preDefData: 0.15, hint: 'Natural decline', dvdrColor: 'primary', interval: [0, 1], toolTip: 'Value from 0 to 1, for ex. 0.77' },
         { preDefData: 0.2, hint: 'Natural growth', dvdrColor: 'primary', interval: [0, 1], toolTip: 'Value from 0 to 1, for ex. 0.09' }
-    ], svg_attrs: [['preserveAspectRatio', 'xMidYMid meet'], ['viewBox', '0 0 305 305'], ['height', '100%'], ['width', SpecificService.dimension(0.35, 0.4)]] }, MODELING_CONSTS);
-export function reducer(state, action) {
-    if (state === void 0) { state = INIT_STATE; }
+    ], svg_attrs: [['preserveAspectRatio', 'xMidYMid meet'], ['viewBox', '0 0 305 305'], ['height', '100%'], ['width', specific_service_1.SpecificService.dimension(0.35, 0.4)]] }, MODELING_CONSTS);
+function reducer(state, action) {
+    if (state === void 0) { state = exports.INIT_STATE; }
     switch (action.type) {
         case modeling.ActionTypes.INPUTS:
-            return __assign({ spn_tgl: 'in', spn_state_val: ComputationService.rndmGen(25, 50), inputs: SpecificService.applInputsData(state.inputs, action.payload), svg_attrs: [['preserveAspectRatio', 'xMidYMid meet'],
+            return __assign({ spn_tgl: 'in', spn_state_val: computation_service_1.ComputationService.rndmGen(25, 50), inputs: specific_service_1.SpecificService.applInputsData(state.inputs, action.payload), svg_attrs: [['preserveAspectRatio', 'xMidYMid meet'],
                     ['viewBox', '0 0 305 305'],
                     ['height', '100%'],
-                    ['width', SpecificService.dimension(0.35, 0.4)]] }, MODELING_CONSTS);
+                    ['width', specific_service_1.SpecificService.dimension(0.35, 0.4)]] }, MODELING_CONSTS);
         case modeling.ActionTypes.SPNTGL_IN:
-            return __assign({ spn_tgl: 'in', spn_state_val: ComputationService.rndmGen(15, 50), inputs: state.inputs, svg_attrs: [['preserveAspectRatio', 'xMidYMid meet'],
+            return __assign({ spn_tgl: 'in', spn_state_val: computation_service_1.ComputationService.rndmGen(15, 50), inputs: state.inputs, svg_attrs: [['preserveAspectRatio', 'xMidYMid meet'],
                     ['viewBox', '0 0 305 305'],
                     ['height', '100%'],
-                    ['width', SpecificService.dimension(0.35, 0.4)]] }, MODELING_CONSTS);
+                    ['width', specific_service_1.SpecificService.dimension(0.35, 0.4)]] }, MODELING_CONSTS);
         case modeling.ActionTypes.SPNTGL_OUT:
             return __assign({ spn_tgl: 'out', spn_state_val: 100, inputs: state.inputs, svg_attrs: [['preserveAspectRatio', 'xMidYMid meet'],
                     ['viewBox', '0 0 305 305'],
                     ['height', '100%'],
-                    ['width', SpecificService.dimension(0.35, 0.4)]] }, MODELING_CONSTS);
+                    ['width', specific_service_1.SpecificService.dimension(0.35, 0.4)]] }, MODELING_CONSTS);
         case modeling.ActionTypes.SPNSTVAL_ST_0:
             return __assign({ spn_tgl: 'out', spn_state_val: 0, inputs: state.inputs, svg_attrs: [['preserveAspectRatio', 'xMidYMid meet'],
                     ['viewBox', '0 0 305 305'],
                     ['height', '100%'],
-                    ['width', SpecificService.dimension(0.35, 0.4)]] }, MODELING_CONSTS);
+                    ['width', specific_service_1.SpecificService.dimension(0.35, 0.4)]] }, MODELING_CONSTS);
         case modeling.ActionTypes.SPNSTVAL_ST_1:
-            return __assign({ spn_tgl: 'in', spn_state_val: ComputationService.rndmGen(55, 70), inputs: state.inputs, svg_attrs: [['preserveAspectRatio', 'xMidYMid meet'],
+            return __assign({ spn_tgl: 'in', spn_state_val: computation_service_1.ComputationService.rndmGen(55, 70), inputs: state.inputs, svg_attrs: [['preserveAspectRatio', 'xMidYMid meet'],
                     ['viewBox', '0 0 305 305'],
                     ['height', '100%'],
-                    ['width', SpecificService.dimension(0.35, 0.4)]] }, MODELING_CONSTS);
+                    ['width', specific_service_1.SpecificService.dimension(0.35, 0.4)]] }, MODELING_CONSTS);
         case modeling.ActionTypes.SPNSTVAL_ST_2:
-            return __assign({ spn_tgl: 'in', spn_state_val: ComputationService.rndmGen(75, 95), inputs: state.inputs, svg_attrs: [['preserveAspectRatio', 'xMidYMid meet'],
+            return __assign({ spn_tgl: 'in', spn_state_val: computation_service_1.ComputationService.rndmGen(75, 95), inputs: state.inputs, svg_attrs: [['preserveAspectRatio', 'xMidYMid meet'],
                     ['viewBox', '0 0 305 305'],
                     ['height', '100%'],
-                    ['width', SpecificService.dimension(0.35, 0.4)]] }, MODELING_CONSTS);
+                    ['width', specific_service_1.SpecificService.dimension(0.35, 0.4)]] }, MODELING_CONSTS);
         default:
             return state;
     }
 }
+exports.reducer = reducer;
 // Because the data structure is defined within the reducer it is optimal to
 // locate our selector functions at this level. If store is to be thought of
 // as a database, and REDUCERS the tables, selectors can be considered the
 // queries into said database. Remember to keep your selectors small and
 // focused so they can be combined and composed to fit each particular
 // use-case.
-export var GET_SVG_COMPS = function (state) { return state.SVG_COMPS; };
-export var GET_SVG_ATTRS = function (state) { return state.svg_attrs; };
-export var GET_MW_TITLE = function (state) { return state.MW_TITLE; };
-export var GET_TOOLTIP_POS = function (state) { return state.TOOLTIP_POS; };
-export var GET_TOOLTIP_D = function (state) { return state.TOOLTIP_D; };
-export var GET_INPUTS = function (state) { return state.inputs; };
-export var GET_SPN_TGL = function (state) { return state.spn_tgl; };
-export var GET_SPN_STATE_VAL = function (state) { return state.spn_state_val; };
-export var GET_MODELING_STATE = createSelector(GET_SVG_COMPS, GET_SVG_ATTRS, GET_MW_TITLE, GET_TOOLTIP_POS, GET_TOOLTIP_D, GET_SPN_TGL, GET_SPN_STATE_VAL, GET_INPUTS, function () {
+exports.GET_SVG_COMPS = function (state) { return state.SVG_COMPS; };
+exports.GET_SVG_ATTRS = function (state) { return state.svg_attrs; };
+exports.GET_MW_TITLE = function (state) { return state.MW_TITLE; };
+exports.GET_TOOLTIP_POS = function (state) { return state.TOOLTIP_POS; };
+exports.GET_TOOLTIP_D = function (state) { return state.TOOLTIP_D; };
+exports.GET_INPUTS = function (state) { return state.inputs; };
+exports.GET_SPN_TGL = function (state) { return state.spn_tgl; };
+exports.GET_SPN_STATE_VAL = function (state) { return state.spn_state_val; };
+exports.GET_MODELING_STATE = reselect_1.createSelector(exports.GET_SVG_COMPS, exports.GET_SVG_ATTRS, exports.GET_MW_TITLE, exports.GET_TOOLTIP_POS, exports.GET_TOOLTIP_D, exports.GET_SPN_TGL, exports.GET_SPN_STATE_VAL, exports.GET_INPUTS, function () {
     var s = [];
     for (var _i = 0; _i < arguments.length; _i++) {
         s[_i] = arguments[_i];

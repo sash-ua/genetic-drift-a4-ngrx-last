@@ -1,45 +1,47 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 // Angular
-import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
-import { CommonModule } from "@angular/common";
-import { InputComponent } from "./inputs.component/input.component";
-import { SpinnerComponent } from "./progress.spinner/spinner.component";
-import { StubComponent } from "./stub.component/stub.component";
-import { ModalWindowComponent } from "./modal_window.component/modal_window.component";
-import { MyMaterialModule } from "./my.material.module/my.material.module";
+var core_1 = require("@angular/core");
+var forms_1 = require("@angular/forms");
+var common_1 = require("@angular/common");
+var input_component_1 = require("./inputs.component/input.component");
+var spinner_component_1 = require("./progress.spinner/spinner.component");
+var stub_component_1 = require("./stub.component/stub.component");
+var modal_window_component_1 = require("./modal_window.component/modal_window.component");
+var my_material_module_1 = require("./my.material.module/my.material.module");
 var SharedModule = (function () {
     function SharedModule() {
     }
     return SharedModule;
 }());
 SharedModule = __decorate([
-    NgModule({
+    core_1.NgModule({
         imports: [
-            CommonModule,
-            FormsModule,
-            MyMaterialModule,
+            common_1.CommonModule,
+            forms_1.FormsModule,
+            my_material_module_1.MyMaterialModule,
         ],
         declarations: [
-            InputComponent,
-            SpinnerComponent,
-            StubComponent,
-            ModalWindowComponent
+            input_component_1.InputComponent,
+            spinner_component_1.SpinnerComponent,
+            stub_component_1.StubComponent,
+            modal_window_component_1.ModalWindowComponent
         ],
         exports: [
-            InputComponent,
-            SpinnerComponent,
-            StubComponent,
-            ModalWindowComponent
+            input_component_1.InputComponent,
+            spinner_component_1.SpinnerComponent,
+            stub_component_1.StubComponent,
+            modal_window_component_1.ModalWindowComponent
         ],
         providers: []
     })
 ], SharedModule);
-export { SharedModule };
+exports.SharedModule = SharedModule;
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 

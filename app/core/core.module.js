@@ -1,56 +1,58 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { FormsModule } from "@angular/forms";
-import { Page404Component } from "./page.404.component/page.404.component";
-import { InstructionComponent } from "./inctruction.component/instruction.component";
-import { ModelingComponent } from "./modeling.component/modeling.component";
-import { AppRoutingModule } from "./app-routing.module";
-import { SharedModule } from "../shared/shared.module";
-import { D3Service } from "../services/d3.service";
-import { DialogsService } from "../services/dialogs.service";
-import { ModalWindowComponent } from "../shared/modal_window.component/modal_window.component";
-import { MyMaterialModule } from "../shared/my.material.module/my.material.module";
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var common_1 = require("@angular/common");
+var forms_1 = require("@angular/forms");
+var page_404_component_1 = require("./page.404.component/page.404.component");
+var instruction_component_1 = require("./inctruction.component/instruction.component");
+var modeling_component_1 = require("./modeling.component/modeling.component");
+var app_routing_module_1 = require("./app-routing.module");
+var shared_module_1 = require("../shared/shared.module");
+var d3_service_1 = require("../services/d3.service");
+var dialogs_service_1 = require("../services/dialogs.service");
+var modal_window_component_1 = require("../shared/modal_window.component/modal_window.component");
+var my_material_module_1 = require("../shared/my.material.module/my.material.module");
 var CoreModule = (function () {
     function CoreModule() {
     }
     return CoreModule;
 }());
 CoreModule = __decorate([
-    NgModule({
+    core_1.NgModule({
         imports: [
-            CommonModule,
-            FormsModule,
-            AppRoutingModule,
-            SharedModule,
-            MyMaterialModule,
+            common_1.CommonModule,
+            forms_1.FormsModule,
+            app_routing_module_1.AppRoutingModule,
+            shared_module_1.SharedModule,
+            my_material_module_1.MyMaterialModule,
         ],
         declarations: [
-            Page404Component,
-            InstructionComponent,
-            ModelingComponent,
+            page_404_component_1.Page404Component,
+            instruction_component_1.InstructionComponent,
+            modeling_component_1.ModelingComponent,
         ],
         exports: [
-            Page404Component,
-            InstructionComponent,
-            ModelingComponent,
-            AppRoutingModule,
+            page_404_component_1.Page404Component,
+            instruction_component_1.InstructionComponent,
+            modeling_component_1.ModelingComponent,
+            app_routing_module_1.AppRoutingModule,
         ],
         providers: [
-            D3Service,
-            DialogsService
+            d3_service_1.D3Service,
+            dialogs_service_1.DialogsService
         ],
         // DialogService entry point
         entryComponents: [
-            ModalWindowComponent
+            modal_window_component_1.ModalWindowComponent
         ],
     })
 ], CoreModule);
-export { CoreModule };
+exports.CoreModule = CoreModule;
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 

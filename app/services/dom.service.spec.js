@@ -1,29 +1,31 @@
-import { TestBed } from "@angular/core/testing";
-import { TestHtmlComponents } from "../testing/test.stub.component/test-html.component";
-import { Renderer2 } from "@angular/core";
-import { By } from "@angular/platform-browser";
-import { DOMService } from "./dom.service";
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var testing_1 = require("@angular/core/testing");
+var test_html_component_1 = require("../testing/test.stub.component/test-html.component");
+var core_1 = require("@angular/core");
+var platform_browser_1 = require("@angular/platform-browser");
+var dom_service_1 = require("./dom.service");
 describe('DOMService: ', function () {
     var arr1 = ['svg', 'g', 'tspan', 'text', 'path'];
     var arr2 = ['div', 'g', 'tspan', 'text', 'path'];
     var el1, el2, serv, r2, fixture, comp;
     beforeEach(function () {
-        TestBed.configureTestingModule({
+        testing_1.TestBed.configureTestingModule({
             imports: [],
             declarations: [
-                TestHtmlComponents
+                test_html_component_1.TestHtmlComponents
             ],
             providers: [
-                DOMService,
-                Renderer2
+                dom_service_1.DOMService,
+                core_1.Renderer2
             ]
         });
-        fixture = TestBed.createComponent(TestHtmlComponents);
+        fixture = testing_1.TestBed.createComponent(test_html_component_1.TestHtmlComponents);
         comp = fixture.componentInstance;
-        el1 = fixture.debugElement.query(By.css('#dom-test'));
-        el2 = fixture.debugElement.query(By.css('#dom-test-ul'));
-        serv = fixture.debugElement.injector.get(DOMService);
-        r2 = fixture.debugElement.injector.get(Renderer2);
+        el1 = fixture.debugElement.query(platform_browser_1.By.css('#dom-test'));
+        el2 = fixture.debugElement.query(platform_browser_1.By.css('#dom-test-ul'));
+        serv = fixture.debugElement.injector.get(dom_service_1.DOMService);
+        r2 = fixture.debugElement.injector.get(core_1.Renderer2);
         fixture.detectChanges();
     });
     it('compare - should compare is el-s tag one of tags array, return true-false', (function () {

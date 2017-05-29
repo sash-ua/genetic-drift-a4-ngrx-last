@@ -1,24 +1,26 @@
-import { TestBed, async } from "@angular/core/testing";
-import { InstructionComponent } from "./instruction.component";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { MaterialModule } from "@angular/material";
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var testing_1 = require("@angular/core/testing");
+var instruction_component_1 = require("./instruction.component");
+var animations_1 = require("@angular/platform-browser/animations");
+var material_1 = require("@angular/material");
 describe('InstructionComponent', function () {
     var fixture;
     var comp;
     var de;
-    beforeEach(async(function () {
-        TestBed.configureTestingModule({
+    beforeEach(testing_1.async(function () {
+        testing_1.TestBed.configureTestingModule({
             imports: [
-                BrowserAnimationsModule,
-                MaterialModule
+                animations_1.BrowserAnimationsModule,
+                material_1.MaterialModule
             ],
             declarations: [
-                InstructionComponent
+                instruction_component_1.InstructionComponent
             ]
         })
             .compileComponents()
             .then(function () {
-            fixture = TestBed.createComponent(InstructionComponent);
+            fixture = testing_1.TestBed.createComponent(instruction_component_1.InstructionComponent);
             comp = fixture.componentInstance;
             fixture.detectChanges();
         });

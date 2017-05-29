@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,13 +8,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Injectable } from '@angular/core';
-import { ModalWindowComponent } from "../shared/modal_window.component/modal_window.component";
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var modal_window_component_1 = require("../shared/modal_window.component/modal_window.component");
 var DialogsService = (function () {
     function DialogsService() {
     }
     DialogsService.prototype.confirm = function (title, element, dialog) {
-        var dialogRef = dialog.open(ModalWindowComponent);
+        var dialogRef = dialog.open(modal_window_component_1.ModalWindowComponent);
         dialogRef.componentInstance.title = title;
         dialogRef.componentInstance.element = element;
         return dialogRef.afterClosed();
@@ -21,9 +23,9 @@ var DialogsService = (function () {
     return DialogsService;
 }());
 DialogsService = __decorate([
-    Injectable(),
+    core_1.Injectable(),
     __metadata("design:paramtypes", [])
 ], DialogsService);
-export { DialogsService };
+exports.DialogsService = DialogsService;
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 

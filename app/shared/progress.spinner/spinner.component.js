@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,8 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
-import { MaterialModule } from "@angular/material";
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var material_1 = require("@angular/material");
 var SpinnerComponent = (function () {
     function SpinnerComponent() {
         this.mode = 'determinate';
@@ -16,22 +18,22 @@ var SpinnerComponent = (function () {
     return SpinnerComponent;
 }());
 __decorate([
-    Input(),
-    __metadata("design:type", MaterialModule)
+    core_1.Input(),
+    __metadata("design:type", material_1.MaterialModule)
 ], SpinnerComponent.prototype, "mode", void 0);
 __decorate([
-    Input('spinner-start-val'),
-    __metadata("design:type", MaterialModule)
+    core_1.Input('spinner-start-val'),
+    __metadata("design:type", material_1.MaterialModule)
 ], SpinnerComponent.prototype, "value", void 0);
 SpinnerComponent = __decorate([
-    Component({
+    core_1.Component({
         moduleId: module.id,
-        changeDetection: ChangeDetectionStrategy.OnPush,
+        changeDetection: core_1.ChangeDetectionStrategy.OnPush,
         selector: 'progress-spinner-d',
         template: "<md-progress-spinner [mode]=\"mode\" [value]=\"value\"></md-progress-spinner>",
         styleUrls: ['spinner.component.css']
     })
 ], SpinnerComponent);
-export { SpinnerComponent };
+exports.SpinnerComponent = SpinnerComponent;
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 

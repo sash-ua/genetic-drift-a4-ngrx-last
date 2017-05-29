@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,9 +8,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 // export for convenience.
-export { ActivatedRoute, Router, RouterLink, RouterOutlet } from '@angular/router';
-import { Component, Directive, Injectable, Input } from '@angular/core';
+var router_1 = require("@angular/router");
+exports.ActivatedRoute = router_1.ActivatedRoute;
+exports.Router = router_1.Router;
+exports.RouterLink = router_1.RouterLink;
+exports.RouterOutlet = router_1.RouterOutlet;
+var core_1 = require("@angular/core");
 var RouterLinkStubDirective = (function () {
     function RouterLinkStubDirective() {
         this.navigatedTo = null;
@@ -20,27 +26,27 @@ var RouterLinkStubDirective = (function () {
     return RouterLinkStubDirective;
 }());
 __decorate([
-    Input('routerLink'),
+    core_1.Input('routerLink'),
     __metadata("design:type", Object)
 ], RouterLinkStubDirective.prototype, "linkParams", void 0);
 RouterLinkStubDirective = __decorate([
-    Directive({
+    core_1.Directive({
         selector: '[routerLink]',
         host: {
             '(click)': 'onClick()'
         }
     })
 ], RouterLinkStubDirective);
-export { RouterLinkStubDirective };
+exports.RouterLinkStubDirective = RouterLinkStubDirective;
 var RouterOutletStubComponent = (function () {
     function RouterOutletStubComponent() {
     }
     return RouterOutletStubComponent;
 }());
 RouterOutletStubComponent = __decorate([
-    Component({ selector: 'router-outlet', template: '' })
+    core_1.Component({ selector: 'router-outlet', template: '' })
 ], RouterOutletStubComponent);
-export { RouterOutletStubComponent };
+exports.RouterOutletStubComponent = RouterOutletStubComponent;
 var RouterStub = (function () {
     function RouterStub() {
     }
@@ -48,15 +54,15 @@ var RouterStub = (function () {
     return RouterStub;
 }());
 RouterStub = __decorate([
-    Injectable()
+    core_1.Injectable()
 ], RouterStub);
-export { RouterStub };
+exports.RouterStub = RouterStub;
 // Only implements params and part of snapshot.params
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+var BehaviorSubject_1 = require("rxjs/BehaviorSubject");
 var ActivatedRouteStub = (function () {
     function ActivatedRouteStub() {
         // ActivatedRoute.params is Observable
-        this.subject = new BehaviorSubject(this.testParams);
+        this.subject = new BehaviorSubject_1.BehaviorSubject(this.testParams);
         this.params = this.subject.asObservable();
     }
     Object.defineProperty(ActivatedRouteStub.prototype, "testParams", {
@@ -79,9 +85,9 @@ var ActivatedRouteStub = (function () {
     return ActivatedRouteStub;
 }());
 ActivatedRouteStub = __decorate([
-    Injectable()
+    core_1.Injectable()
 ], ActivatedRouteStub);
-export { ActivatedRouteStub };
+exports.ActivatedRouteStub = ActivatedRouteStub;
 /*
  Copyright 2016 Google Inc. All Rights Reserved.
  Use of this source code is governed by an MIT-style license that

@@ -1,22 +1,24 @@
-import { TestBed } from "@angular/core/testing";
-import { Renderer2 } from "@angular/core";
-import { StubComponent } from "./stub.component";
-import { MaterialModule } from "@angular/material";
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var testing_1 = require("@angular/core/testing");
+var core_1 = require("@angular/core");
+var stub_component_1 = require("./stub.component");
+var material_1 = require("@angular/material");
 describe('StubComponent: ', function () {
     var fixture, comp, de, el;
     beforeEach(function () {
-        TestBed.configureTestingModule({
+        testing_1.TestBed.configureTestingModule({
             imports: [
-                MaterialModule
+                material_1.MaterialModule
             ],
             declarations: [
-                StubComponent
+                stub_component_1.StubComponent
             ],
             providers: [
-                Renderer2
+                core_1.Renderer2
             ]
         });
-        fixture = TestBed.createComponent(StubComponent);
+        fixture = testing_1.TestBed.createComponent(stub_component_1.StubComponent);
         comp = fixture.componentInstance;
         comp.body = document.createElement('div');
         de = fixture.debugElement;

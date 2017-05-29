@@ -1,16 +1,18 @@
-import { enableProdMode } from '@angular/core';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
 // The browser platform with a compiler
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { AppModule } from "./app.module";
-import { enableDebugTools } from '@angular/platform-browser';
-import { environment } from "./environments/environment";
-if (environment.production) {
-    enableProdMode();
-    platformBrowserDynamic().bootstrapModule(AppModule);
+var platform_browser_dynamic_1 = require("@angular/platform-browser-dynamic");
+var app_module_1 = require("./app.module");
+var platform_browser_1 = require("@angular/platform-browser");
+var environment_1 = require("./environments/environment");
+if (environment_1.environment.production) {
+    core_1.enableProdMode();
+    platform_browser_dynamic_1.platformBrowserDynamic().bootstrapModule(app_module_1.AppModule);
 }
 else {
-    platformBrowserDynamic().bootstrapModule(AppModule)
+    platform_browser_dynamic_1.platformBrowserDynamic().bootstrapModule(app_module_1.AppModule)
         .then(function (appRef) {
-        enableDebugTools(appRef);
+        platform_browser_1.enableDebugTools(appRef);
     });
 }

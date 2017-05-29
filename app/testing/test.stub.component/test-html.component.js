@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,9 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Component } from "@angular/core";
-import { DOMService } from "../../services/dom.service";
-import { DialogsService } from "../../services/dialogs.service";
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var dom_service_1 = require("../../services/dom.service");
+var dialogs_service_1 = require("../../services/dialogs.service");
 var TestHtmlComponents = (function () {
     function TestHtmlComponents() {
     }
@@ -19,53 +21,53 @@ var TestHtmlComponents = (function () {
     return TestHtmlComponents;
 }());
 TestHtmlComponents = __decorate([
-    Component({
+    core_1.Component({
         template: "\n    <form>\n        <input value=\"1000\">\n        <input id=\"wrong\" value=\"11w\">\n        <input value=\"12\">\n        <input id=\"right\" value=\"0.2\">\n        <input value=\"0.5\">\n        <input value=\"0.9\">\n    </form>\n    <div id=\"dom-test\" >\n        <ul>\n            <li>1</li>\n            <li>2</li>\n            <li id=\"dom-test-ul\">3</li>\n        </ul>\n    </div>\n    <button id=\"test-button\" (click)=\"open()\">Check clicking</button>\n    <div id=\"mwtest\">test Dialog</div>",
         providers: []
     }),
     __metadata("design:paramtypes", [])
 ], TestHtmlComponents);
-export { TestHtmlComponents };
-import { NgModule } from '@angular/core';
-import { BrowserModule } from "@angular/platform-browser";
-import { ModalWindowComponent } from "../../shared/modal_window.component/modal_window.component";
-import { StubComponent } from "../../shared/stub.component/stub.component";
-import { MaterialModule, MdDialogModule } from "@angular/material";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+exports.TestHtmlComponents = TestHtmlComponents;
+var core_2 = require("@angular/core");
+var platform_browser_1 = require("@angular/platform-browser");
+var modal_window_component_1 = require("../../shared/modal_window.component/modal_window.component");
+var stub_component_1 = require("../../shared/stub.component/stub.component");
+var material_1 = require("@angular/material");
+var animations_1 = require("@angular/platform-browser/animations");
 var TestModule = (function () {
     function TestModule() {
     }
     return TestModule;
 }());
 TestModule = __decorate([
-    NgModule({
+    core_2.NgModule({
         imports: [
-            BrowserModule,
-            MdDialogModule,
-            BrowserAnimationsModule,
-            MaterialModule
+            platform_browser_1.BrowserModule,
+            material_1.MdDialogModule,
+            animations_1.BrowserAnimationsModule,
+            material_1.MaterialModule
         ],
         exports: [
             TestHtmlComponents
         ],
         declarations: [
             TestHtmlComponents,
-            ModalWindowComponent,
-            StubComponent
+            modal_window_component_1.ModalWindowComponent,
+            stub_component_1.StubComponent
         ],
         providers: [
-            DOMService,
-            DialogsService
+            dom_service_1.DOMService,
+            dialogs_service_1.DialogsService
         ],
         bootstrap: [
             TestHtmlComponents
         ],
         // DialogService entry point
         entryComponents: [
-            ModalWindowComponent
+            modal_window_component_1.ModalWindowComponent
         ],
     })
 ], TestModule);
-export { TestModule };
+exports.TestModule = TestModule;
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 

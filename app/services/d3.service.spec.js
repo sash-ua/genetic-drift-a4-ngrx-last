@@ -1,26 +1,28 @@
-import { TestBed, async } from "@angular/core/testing";
-import { TestHtmlComponents } from "../testing/test.stub.component/test-html.component";
-import { By } from "@angular/platform-browser";
-import { D3Service } from "./d3.service";
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var testing_1 = require("@angular/core/testing");
+var test_html_component_1 = require("../testing/test.stub.component/test-html.component");
+var platform_browser_1 = require("@angular/platform-browser");
+var d3_service_1 = require("./d3.service");
 describe('D3Service: ', function () {
     var fixture, comp, de, serv, el;
     beforeEach(function () {
-        TestBed.configureTestingModule({
+        testing_1.TestBed.configureTestingModule({
             declarations: [
-                TestHtmlComponents
+                test_html_component_1.TestHtmlComponents
             ],
             providers: [
-                D3Service
+                d3_service_1.D3Service
             ]
         });
-        fixture = TestBed.createComponent(TestHtmlComponents);
+        fixture = testing_1.TestBed.createComponent(test_html_component_1.TestHtmlComponents);
         comp = fixture.componentInstance;
         de = fixture.debugElement;
-        el = de.query(By.css('#dom-test-ul'));
-        serv = de.injector.get(D3Service);
+        el = de.query(platform_browser_1.By.css('#dom-test-ul'));
+        serv = de.injector.get(d3_service_1.D3Service);
         fixture.detectChanges();
     });
-    it('should add svg chart to element #dom-test-ul', async(function () {
+    it('should add svg chart to element #dom-test-ul', testing_1.async(function () {
         fixture.detectChanges();
         fixture.whenStable().then(function () {
             serv.drawChart([1, 2, 3, 4, 3, 2, 1], 'X', 'Y', el.nativeElement, ['Legend', 1], 10);
@@ -28,7 +30,7 @@ describe('D3Service: ', function () {
             expect(el.nativeElement.firstElementChild.tagName).toEqual('svg');
         });
     }));
-    it('should add svg chart to element #dom-test-ul', async(function () {
+    it('should add svg chart to element #dom-test-ul', testing_1.async(function () {
         fixture.detectChanges();
         fixture.whenStable().then(function () {
             serv.drawChart([1, 2, 3, 4, 3, 2, 1], 'X', 'Y', el.nativeElement, []);
