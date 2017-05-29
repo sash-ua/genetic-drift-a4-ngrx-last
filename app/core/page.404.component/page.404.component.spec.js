@@ -1,16 +1,14 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var testing_1 = require("@angular/core/testing");
-var page_404_component_1 = require("./page.404.component");
+import { TestBed } from "@angular/core/testing";
+import { Page404Component } from "./page.404.component";
 describe('Page404Component: ', function () {
     var fixture, comp, de;
     beforeEach(function () {
-        testing_1.TestBed.configureTestingModule({
+        TestBed.configureTestingModule({
             declarations: [
-                page_404_component_1.Page404Component
+                Page404Component
             ]
         });
-        fixture = testing_1.TestBed.createComponent(page_404_component_1.Page404Component);
+        fixture = TestBed.createComponent(Page404Component);
         comp = fixture.componentInstance;
         fixture.detectChanges();
     });

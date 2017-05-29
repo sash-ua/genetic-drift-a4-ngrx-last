@@ -15,7 +15,7 @@ const REDUCERS = {
     router: fromRouter.routerReducer,
 };
 
-const DEV_REDUCER: ActionReducer<State> = compose(storeFreeze, combineReducers)(REDUCERS);
+export const DEV_REDUCER: ActionReducer<State> = compose(storeFreeze, combineReducers)(REDUCERS);
 const PROD_REDUCER: ActionReducer<State> = combineReducers(REDUCERS);
 
 export function reducer(state: any, action: any) {

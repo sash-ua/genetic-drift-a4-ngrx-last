@@ -1,4 +1,3 @@
-"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,9 +7,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var material_1 = require("@angular/material");
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { MaterialModule } from "@angular/material";
 var SpinnerComponent = (function () {
     function SpinnerComponent() {
         this.mode = 'determinate';
@@ -18,22 +16,22 @@ var SpinnerComponent = (function () {
     return SpinnerComponent;
 }());
 __decorate([
-    core_1.Input(),
-    __metadata("design:type", material_1.MaterialModule)
+    Input(),
+    __metadata("design:type", MaterialModule)
 ], SpinnerComponent.prototype, "mode", void 0);
 __decorate([
-    core_1.Input('spinner-start-val'),
-    __metadata("design:type", material_1.MaterialModule)
+    Input('spinner-start-val'),
+    __metadata("design:type", MaterialModule)
 ], SpinnerComponent.prototype, "value", void 0);
 SpinnerComponent = __decorate([
-    core_1.Component({
+    Component({
         moduleId: module.id,
-        changeDetection: core_1.ChangeDetectionStrategy.OnPush,
+        changeDetection: ChangeDetectionStrategy.OnPush,
         selector: 'progress-spinner-d',
         template: "<md-progress-spinner [mode]=\"mode\" [value]=\"value\"></md-progress-spinner>",
         styleUrls: ['spinner.component.css']
     })
 ], SpinnerComponent);
-exports.SpinnerComponent = SpinnerComponent;
+export { SpinnerComponent };
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 

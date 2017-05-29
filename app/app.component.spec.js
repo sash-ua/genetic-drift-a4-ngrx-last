@@ -1,14 +1,12 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var testing_1 = require("@angular/core/testing");
-var AppComponent_1 = require("./AppComponent");
-var platform_browser_1 = require("@angular/platform-browser");
-var testing_2 = require("@angular/router/testing");
-var store_1 = require("@ngrx/store");
-require("hammerjs");
-var index_1 = require("./store.reducers/index");
-var forms_1 = require("@angular/forms");
-var injectors_1 = require("./testing/injectors");
+import { TestBed, async } from "@angular/core/testing";
+import { AppComponent } from "./AppComponent";
+import { By } from "@angular/platform-browser";
+import { RouterTestingModule } from "@angular/router/testing";
+import { Store, StoreModule } from "@ngrx/store";
+import "hammerjs";
+import { reducer } from "./store.reducers/index";
+import { FormsModule } from "@angular/forms";
+import { createInjector } from "./testing/injectors";
 describe('AppComponent: ', function () {
     var el;
     var fixture;
@@ -18,23 +16,23 @@ describe('AppComponent: ', function () {
     var serv;
     var evStub4 = { offsetDirection: 4 };
     var evStub2 = { offsetDirection: 2 };
-    beforeEach(testing_1.async(function () {
-        testing_1.TestBed.configureTestingModule({
+    beforeEach(async(function () {
+        TestBed.configureTestingModule({
             imports: [
-                forms_1.FormsModule,
-                testing_2.RouterTestingModule,
-                store_1.StoreModule.provideStore(index_1.reducer)
+                FormsModule,
+                RouterTestingModule,
+                StoreModule.provideStore(reducer)
             ],
             declarations: [
-                AppComponent_1.AppComponent
+                AppComponent
             ],
             providers: []
         })
             .compileComponents()
             .then(function () {
-            fixture = testing_1.TestBed.createComponent(AppComponent_1.AppComponent);
+            fixture = TestBed.createComponent(AppComponent);
             comp = fixture.componentInstance;
-            de = fixture.debugElement.query(platform_browser_1.By.css('h1'));
+            de = fixture.debugElement.query(By.css('h1'));
             el = de.nativeElement.innerText;
         });
     }));
@@ -44,7 +42,7 @@ describe('AppComponent: ', function () {
                 path: '/instruction'
             }
         };
-        store = injectors_1.createInjector(store_1.StoreModule.provideStore(reducers, {})).get(store_1.Store);
+        store = createInjector(StoreModule.provideStore(reducers, {})).get(Store);
     });
     it('should create the component', (function () {
         expect(comp).toBeDefined();

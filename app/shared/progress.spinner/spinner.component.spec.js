@@ -1,22 +1,20 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var testing_1 = require("@angular/core/testing");
-var spinner_component_1 = require("./spinner.component");
-var material_1 = require("@angular/material");
-var platform_browser_1 = require("@angular/platform-browser");
+import { TestBed, async } from "@angular/core/testing";
+import { SpinnerComponent } from "./spinner.component";
+import { MaterialModule } from "@angular/material";
+import { By } from "@angular/platform-browser";
 describe('SpinnerComponent: ', function () {
     var fixture, comp, de, el;
-    beforeEach(testing_1.async(function () {
-        testing_1.TestBed.configureTestingModule({
+    beforeEach(async(function () {
+        TestBed.configureTestingModule({
             imports: [
-                material_1.MaterialModule
+                MaterialModule
             ],
             declarations: [
-                spinner_component_1.SpinnerComponent
+                SpinnerComponent
             ]
         }).compileComponents()
             .then(function () {
-            fixture = testing_1.TestBed.createComponent(spinner_component_1.SpinnerComponent);
+            fixture = TestBed.createComponent(SpinnerComponent);
             comp = fixture.componentInstance;
             comp.value = 50;
             de = fixture.debugElement;
@@ -27,7 +25,7 @@ describe('SpinnerComponent: ', function () {
         expect(comp).toBeDefined();
     });
     it('should define a default value of undefined for the value attribute', function () {
-        var progressElement = fixture.debugElement.query(platform_browser_1.By.css('md-progress-spinner'));
+        var progressElement = fixture.debugElement.query(By.css('md-progress-spinner'));
         expect(progressElement.componentInstance.value).toEqual(50);
     });
 });

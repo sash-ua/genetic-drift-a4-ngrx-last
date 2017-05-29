@@ -5,7 +5,7 @@ import {FormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 // UI
-import {MyMaterialModule} from "./shared/my.material.module/my.material.module";
+// import {MyMaterialModule} from "./shared/my.material.module/my.material.module";
 // Modules
 import {CoreModule} from "./core/core.module";
 import {SharedModule} from "./shared/shared.module";

@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -9,8 +8,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-Object.defineProperty(exports, "__esModule", { value: true });
-var platform_browser_1 = require("@angular/platform-browser");
+import { HammerGestureConfig } from "@angular/platform-browser";
 var HammerConfig = (function (_super) {
     __extends(HammerConfig, _super);
     function HammerConfig() {
@@ -25,7 +23,7 @@ var HammerConfig = (function (_super) {
         });
     };
     return HammerConfig;
-}(platform_browser_1.HammerGestureConfig));
-exports.HammerConfig = HammerConfig;
+}(HammerGestureConfig));
+export { HammerConfig };
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License. 

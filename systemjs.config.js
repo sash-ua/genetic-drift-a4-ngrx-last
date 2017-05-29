@@ -1,5 +1,5 @@
 
-    System.config({
+    SystemJS.config({
         // transpile: 'ts',
         paths: {
             // paths serve as alias

@@ -1,3 +1,9 @@
+# 1.0.5 (2017-05-29)
+
+### BUG FIXES
+
+Gulpfile.js fix.
+
 # 1.0.4 (2017-04-19)
 
 ### CHANGES

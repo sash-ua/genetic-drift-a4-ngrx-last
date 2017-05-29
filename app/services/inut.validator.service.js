@@ -1,4 +1,3 @@
-"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,17 +7,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
-var forms_1 = require("@angular/forms");
+import { Injectable } from '@angular/core';
+import { FormControl, Validators } from "@angular/forms";
 // Input string validation. The First stage, second's in the specific.service.applInputsData
 var InputValidatorService = (function () {
     function InputValidatorService() {
     }
     InputValidatorService.prototype.inputControl = function (inputL, cond) {
-        return (this.inputConds(new forms_1.FormControl(inputL, forms_1.Validators.compose([
-            forms_1.Validators.required,
-            forms_1.Validators.pattern('([0-9]+)|([0-9]+\.[0-9]+)')
+        return (this.inputConds(new FormControl(inputL, Validators.compose([
+            Validators.required,
+            Validators.pattern('([0-9]+)|([0-9]+\.[0-9]+)')
         ])), cond))
             ? inputL
             : null;
@@ -30,9 +28,9 @@ var InputValidatorService = (function () {
     return InputValidatorService;
 }());
 InputValidatorService = __decorate([
-    core_1.Injectable(),
+    Injectable(),
     __metadata("design:paramtypes", [])
 ], InputValidatorService);
-exports.InputValidatorService = InputValidatorService;
+export { InputValidatorService };
 //Copyright (c) 2017 Alex Tranchenko. All rights reserved.
 //MIT License.

@@ -1,11 +1,9 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var testing_1 = require("@angular/core/testing");
-var dialogs_service_1 = require("./dialogs.service");
-var test_html_component_1 = require("../testing/test.stub.component/test-html.component");
-var core_1 = require("@angular/core");
-var platform_browser_1 = require("@angular/platform-browser");
-var material_1 = require("@angular/material");
+import { TestBed } from "@angular/core/testing";
+import { DialogsService } from "./dialogs.service";
+import { TestHtmlComponents, TestModule } from "../testing/test.stub.component/test-html.component";
+import { NO_ERRORS_SCHEMA } from "@angular/core";
+import { By } from "@angular/platform-browser";
+import { MdDialog, MdDialogModule, OverlayContainer } from "@angular/material";
 describe('DialogsService: ', function () {
     var fixture;
     var de;
@@ -16,26 +14,26 @@ describe('DialogsService: ', function () {
     var overlayContainerElement;
     var txt = 'Test title';
     beforeEach(function () {
-        testing_1.TestBed.configureTestingModule({
+        TestBed.configureTestingModule({
             imports: [
-                material_1.MdDialogModule,
-                test_html_component_1.TestModule
+                MdDialogModule,
+                TestModule
             ],
             declarations: [],
             providers: [
-                { provide: material_1.OverlayContainer, useFactory: function () {
+                { provide: OverlayContainer, useFactory: function () {
                         overlayContainerElement = document.createElement('div');
                         return { getContainerElement: function () { return overlayContainerElement; } };
                     } }
             ],
-            schemas: [core_1.NO_ERRORS_SCHEMA]
+            schemas: [NO_ERRORS_SCHEMA]
         });
-        fixture = testing_1.TestBed.createComponent(test_html_component_1.TestHtmlComponents);
+        fixture = TestBed.createComponent(TestHtmlComponents);
         comp = fixture.componentInstance;
         de = fixture.debugElement;
-        ds = de.injector.get(dialogs_service_1.DialogsService);
-        md = de.injector.get(material_1.MdDialog);
-        el = de.query(platform_browser_1.By.css('#mwtest')).nativeElement;
+        ds = de.injector.get(DialogsService);
+        md = de.injector.get(MdDialog);
+        el = de.query(By.css('#mwtest')).nativeElement;
         ds.confirm(txt, el, md);
     });
     it('compare - should create dialog window', (function () {
